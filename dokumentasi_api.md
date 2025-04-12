@@ -1,4 +1,4 @@
-Berikut adalah dokumentasi lengkap untuk API yang telah Anda buat, termasuk penjelasan tentang payload untuk setiap kode dan cara request untuk setiap endpoint.
+###        Dokumentasi api wong gabut
 
 ### **1. Persiapan yang di butuhkan**
 
