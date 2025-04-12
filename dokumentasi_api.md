@@ -23,12 +23,6 @@ Berikut adalah dokumentasi lengkap untuk API yang telah Anda buat, termasuk penj
 }
 ```
 
-#### List Payment 
-- **dana**
-- **shopeepay**
-- **gopay**
-- **pulsa**
-
 ### **2. Cara Request Endpoint**
 
 #### Get Produk:
