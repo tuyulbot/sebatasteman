@@ -23,11 +23,17 @@ Berikut adalah dokumentasi lengkap untuk API yang telah Anda buat, termasuk penj
 }
 ```
 
+#### List Payment 
+- **dana**
+- **shopeepay**
+- **gopay**
+- **pulsa**
+
 ### **2. Cara Request Endpoint**
 
 #### Get Produk:
 
- - Contoh Request
+ - Contoh Request Simpel Python
 ```python
 import requests
 
@@ -44,7 +50,8 @@ print(response.json())
 ```
 
  - Contoh Respon
-```{
+```json
+{
   "status": "success",
   "total": 2,
   "data": [
@@ -62,4 +69,36 @@ print(response.json())
     }
   ]
 }
+```
+#### Deskripsi Get Produk:
+parsing json dari respon endpoint get produk dan ambil data nama_paket, harga_panel, kode_buy untuk proses pembelian
+
+
+#### Post Pembelian:
+
+ - Contoh Request Simpel Python
+```python
+import requests
+import json
+
+url = "https://api.tuyull.my.id/api/v1/dor"
+
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "0a1ccba4-e6fc-498c-af2f-5f889c765aaa"
+}
+
+payload = {
+    "kode": "pancinganv1",  # kode di ambil dri endpoint get produk (kode_buy)
+    "nama_paket": "Xtra Combo Spesial 8GB", # nama paket di ambil dri api endpoint get produk (nama_paket)
+    "nomor_hp": "087777334618", # nomor hp bisa input dengan format (08 / 628)
+    "payment": "nganu",
+    "id_telegram": "7902668644",
+    "password": "tuyulbot"
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+
+print(response.status_code)
+print(response.json())
 ```
