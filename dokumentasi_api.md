@@ -1,9 +1,13 @@
 Berikut adalah dokumentasi lengkap untuk API yang telah Anda buat, termasuk penjelasan tentang payload untuk setiap kode dan cara request untuk setiap endpoint.
 
 ### **1. Persiapan yang di butuhkan**
-#### Header:
-Contoh
-`GET /api/v1/ping`
+
+#### Endpoint GET Produk:
+  - **https://api.tuyull.my.id/api/v1/produk**
+
+#### Endpoint Post Pembelian:
+  - **https://api.tuyull.my.id/api/v1/dor**
+
 
 #### Deskripsi:
 Endpoint ini hanya untuk memeriksa apakah server API Anda berjalan dengan baik.
