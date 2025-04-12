@@ -23,22 +23,22 @@ Berikut adalah dokumentasi lengkap untuk API yang telah Anda buat, termasuk penj
 }
 ```
 
-#### Deskripsi:
-Endpoint ini hanya untuk memeriksa apakah server API Anda berjalan dengan baik.
+### **2. Cara Request Endpoint**
 
-#### Response:
-```json
-{
-  "status": "success",
-  "message": "pong"
+#### Get Produk:
+
+ - Contoh Request
+```python
+import requests
+
+url = "https://api.tuyull.my.id/api/v1/produk"
+headers = {
+    "Authorization": "0a1ccba4-e6fc-498c-af2f-5f889c765aaa"
 }
+
+response = requests.get(url, headers=headers)
+
+# Tampilkan hasil respons
+print(response.status_code)
+print(response.json())
 ```
-
-#### Cara Request:
-- URL: `/api/v1/ping`
-- Method: `GET`
-- Response: 200 OK
-
----
-
-### **2. Dor Endpoint**
