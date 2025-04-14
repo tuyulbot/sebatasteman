@@ -118,7 +118,7 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
 import requests
 
 # URL dan headers
-url = 'https://api.tuyull.my.id/api/v1/minta-otp?id_telegram=2233444&password_baru=tested
+url = 'https://api.tuyull.my.id/api/v1/ubah-password?id_telegram=2233444&password_baru=tested
 headers = {
     'Authorization': "api-key" #Chat admin
 }
