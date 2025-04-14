@@ -111,6 +111,34 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
 }
 ```
 
+#### - Rubah Password Pembelian
+
+ - Contoh Request Simpel Python
+```python
+import requests
+
+# URL dan headers
+url = 'https://api.tuyull.my.id/api/v1/minta-otp?id_telegram=2233444&password_baru=tested
+headers = {
+    'Authorization': "api-key" #Chat admin
+}
+
+# Melakukan request GET
+response = requests.get(url, headers=headers)
+print(f"Response : {response})
+```
+
+#### Deskripsi:
+Masukan id_telegram dan password baru anda dan simpan password anda secara aman jangan di kasih tau sama orang lain
+
+ - Contoh Respon Succes
+```json
+{
+  "status": "success",
+  "message": "Password berhasil diperbarui"
+}
+```
+
 #### - Get Produk:
 
  - Contoh Request Simpel Python
