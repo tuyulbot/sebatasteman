@@ -25,7 +25,7 @@
 
 ### **2. Cara Request Endpoint**
 
-#### Minta Otp
+#### - Minta Otp
  - Contoh Request simpel python
 ```python
 import requests
@@ -70,7 +70,7 @@ Rubah nomor_hp yang mau minta kode otp
 }
 ```
 
-#### Verifikasi otp
+#### - Verifikasi otp
 
  - Contoh Request
 ```python
@@ -114,7 +114,7 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
 }
 ```
 
-#### Get Produk:
+#### - Get Produk:
 
  - Contoh Request Simpel Python
 ```python
@@ -159,7 +159,7 @@ print(response.json())
 parsing json dari respon endpoint get produk dan ambil data nama_paket, harga_panel, kode_buy, payment_suport untuk digunakan proses endpoint post pembelian
 
 
-#### Post Pembelian:
+#### - Post Pembelian:
 
  - Contoh Request Simpel Python
 ```python
