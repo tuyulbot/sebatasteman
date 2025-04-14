@@ -2,13 +2,10 @@
 
 ### **1. Persiapan yang di butuhkan**
 
-#### Endpoint GET Produk:
-  - **https://api.tuyull.my.id/api/v1/produk**
+#### URL Api
+  - **https://api.tuyull.my.id/**
 
-#### Endpoint Post Pembelian:
-  - **https://api.tuyull.my.id/api/v1/dor**
-
-#### Header Endpoint Post Pembelian:
+#### Header:
 ```json
 {
   "Content-Type": "application/json",
@@ -16,7 +13,7 @@
 }
 ```
 
-#### Header Endpoint Get Produk:
+#### Header:
 ```json
 {
   "Authorization": "api-key" //Chat admin
