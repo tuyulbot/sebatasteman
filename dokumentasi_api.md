@@ -25,6 +25,95 @@
 
 ### **2. Cara Request Endpoint**
 
+#### Minta Otp
+ - Contoh Request simpel python
+```python
+import requests
+
+# URL dan headers
+url = 'https://api.tuyull.my.id/api/v1/minta-otp?nomor_hp=0877773346'
+headers = {
+    'Authorization': "api-key" #Chat admin
+}
+
+# Melakukan request GET
+response = requests.get(url, headers=headers)
+print(f"Response : {response})
+```
+
+#### Deskripsi:
+Rubah nomor_hp yang mau minta kode otp
+
+ - Contoh Respon Sukses
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "OTP request berhasil",
+    "data": {
+      "expires_in": 300,
+      "max_validation_attempt_suspend_duration": 900,
+      "max_validation_attempt": 5,
+      "next_resend_allowed_at": 60,
+      "max_validation_suspend_duration": 900,
+      "max_request_attempt": 4,
+      "max_request_suspend_duration": 900,
+      "subscriber_id": "0PkeR6m9eQk2OhyEDY0WcA==",
+      "type": "PREPAID"
+    },
+    "delete_status": "Data dengan nomor 6287777334689 berhasil dihapus (jika ada).",
+    "insert_status": "Data berhasil disimpan ke database dengan ID 33261"
+  },
+  "stderr": ""
+}
+```
+
+#### Verifikasi otp
+
+ - Contoh Request
+```python
+import requests
+
+# URL dan headers
+url = 'https://api.tuyull.my.id/api/v1/minta-otp?nomor_hp=0877773346&kode_otp=876677
+headers = {
+    'Authorization': "api-key" #Chat admin
+}
+
+# Melakukan request GET
+response = requests.get(url, headers=headers)
+print(f"Response : {response})
+```
+
+#### Deskripsi:
+Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di dapatkan di sms
+
+ - Contoh Respon sukses
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Login nomor success",
+    "data": {
+      "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4cHNfTzV4VEhnd3MzcW4tYlRiUk1yay1yeHFsemtrdEl6M2UtLXlkRzdjIn0.eyJleHAiOjE3NDQ2NjI2NTQsImlhdCI6MTc0NDY2MjM1NCwianRpIjoiMzg5NzZhMjktNzVmNy00NDEyLThkZjctNDhiYzgzYjEwZTNlIiwiaXNzIjoiaHR0cHM6Ly9nZWRlLmNpYW0ueGxheGlhdGEuY28uaWQvcmVhbG1zL3hsLWNpYW0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMWM0YTgzYjUtNzI3YS00MzBiLWJkMTMtOTY2ZGM4ZWQxZGE0IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZjE2MGZhMTItZGIzZC00MDcyLTg3MDktYzc3OGMxNzNmZWU3Iiwic2Vzc2lvbl9zdGF0ZSI6IjlhYzM0MTE4LTViYTEtNGY2YS1hOTBlLTcyOTBmMjg5NTJmZiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMteGwtY2lhbSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiOWFjMzQxMTgtNWJhMS00ZjZhLWE5MGUtNzI5MGYyODk1MmZmIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiLSIsInByZWZlcnJlZF91c2VybmFtZSI6IjYyODc3NzczMzQ2ODkiLCJtc2lzZG4iOiI2Mjg3Nzc3MzM0Njg5IiwiZmFtaWx5X25hbWUiOiItIn0.SSUClQknyngDGnm7eYhz6Xnu1y9LDr9teEMSpb-ZVObJqkHqac_cxGWkcZINgmFvWpbLI1ACF9f_2fwMi7Q36VJKuCwQcHfoUvX9PfMqNyNBV1DTcsqbkqDoSvqffoFLfV06KFOBdAk-KWGErmkH0f_qywbGKzD3jFPy6U2irZvex-IPVmYKQwBV3BpiJYB-_d7Zz8_DD5PykCmpQfpxJZsTO5SRBEyAjIzqa0t2v8LQLJGSiqh3Mupe0DShbWe84FpiL433W_glntwYgiiiUTPLakSNEwodD-OKZMa-0PqP2E6vRTnKF7lJt9JA0Gebd3tlncZUsEYFnhqjOSXWuw",
+      "expires_in": 299,
+      "refresh_expires_in": 7775999,
+      "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhZTQzZmFiZi1iOGFlLTQxYmUtOGUwOS1iODJkYWM3NGU4MjAifQ.eyJleHAiOjE3NTI0MzgzNTQsImlhdCI6MTc0NDY2MjM1NCwianRpIjoiODI0MmNhNTktYzhmMS00YzhmLWJiNDQtNDIyN2NlNGI0MTgyIiwiaXNzIjoiaHR0cHM6Ly9nZWRlLmNpYW0ueGxheGlhdGEuY28uaWQvcmVhbG1zL3hsLWNpYW0iLCJhdWQiOiJodHRwczovL2dlZGUuY2lhbS54bGF4aWF0YS5jby5pZC9yZWFsbXMveGwtY2lhbSIsInN1YiI6IjFjNGE4M2I1LTcyN2EtNDMwYi1iZDEzLTk2NmRjOGVkMWRhNCIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJmMTYwZmExMi1kYjNkLTQwNzItODcwOS1jNzc4YzE3M2ZlZTciLCJzZXNzaW9uX3N0YXRlIjoiOWFjMzQxMTgtNWJhMS00ZjZhLWE5MGUtNzI5MGYyODk1MmZmIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjlhYzM0MTE4LTViYTEtNGY2YS1hOTBlLTcyOTBmMjg5NTJmZiJ9.yiXWsbQmhO2FH_JfLKL3kvc5-TDq-hMudxlxIHWv9ww",
+      "token_type": "Bearer",
+      "id_token": "eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJjdHkiOiJKV1QiLCJraWQiOiJzNG8zMm1hbl9jbXRyU1dILUEtZWNhTF94N2dvbzVyZE1iVFpMd3ZiaUljIn0.PG4pLOB4mBX-_CDYHNjQZf53M9EcvWBH3OCbw8d7fjqQ6dwK20xvTVAxdIb9SHVi9cXtQGk1PwriIFDsvltMrSiPePoAF-AYDGqn1ZYHmqjRaj08l7bexmJjRoZHqjKzusrDk31a5rOxCi3NcBICf68GO9G2WEVmBk2ShYD99NQmpo0CjQFc_OnhbQJ_egrBnnGwaiZxUbyu7XC6sfFRPwNouZEQEAZGaMxwENTTT7mJOzfLzuX2h4VC7rWbGSVFtxr3_n2-p6Dz6hu3v0s3KvUznpz86zr5yFOYHP7imf87E_9THzKvsQPQjZKF4jncPY6LqnKasnW1_YQbKh8VjA.8z_f7bfoH3ABb0yYs5BNJg.c77AjaKUwO72lS5ZcLN5HUo8PC-2AQjGbjs4tSCDn9PsrKZkfQf69i2iJWbNtaqYkmQX1tR9XLMZ5Klh204HhKkIz0B8ARoz74r3VYw804xTa6QW-wC81d3jFBb295i6Gb5E3FT3ruoGS9AJfdmTBikgtptan_pAtDTRXKXy3WQ2cYGFrdTR2Maw9g2tqfyu_LWP0_KPwOL7dNaKXmmNVtNsunYcsA8nd5Hog5bKu5tU0h8r6pqFMPAAxeAUYk8kHbYDMEFfN7Y43lQtlLTmiMawbTRQh7WSS0qdipDBiLlewsI0TKh0bdz5u5beiXLWkK5csj1ewfQamCC1mvfRAPADORlcE-lzKmI5weDrp9pGykiSvE3BiH1MD8z5GOQpckVmChn1IzndyE219baUH3DjInGyurKsUb5PAJy-deXPngz11H5HzC_jhrCcvQMEcQJGCABPa8BGYD-sY_HiKWcI9T48SN6VBKCZv-uAkrbcICok3vw0ZCEyu_mo1E9M8gqvfikom0XwsE0dyDx04ugUUExyBHY7hdRhQ2DNSE1K6FOqQcTKCy0DiDNWtb78LUiB-qLD7VhxTFn0jfe6SxaApqxrLQBS5cbJTZlQpDO8H7rQtzIID17DIQP97SkeU9c2HsDgCRzGDicYatJfu4n-cmwsHogjefy-6Dm2mKU9YIaMpod1NedOpa5h89qAbuBc4agvu7ZK6UXnAgCVSUOBA-BrDtw3DSO4htU4qr85R30ogH5QXXbFau5ZZDsqSkxJVpu477zWGNBxUj5VGfgVlRd1zqeZz-5PI8sPWcCPBEBIND_SCwsAOcCL8nQ5ldYHLiC9cWqH5tH1jP8mNLypJ6fxK33CJaqqqkU1RAFtl9M47fSeOE3gGR9TxmhIYj6CsPlsKpuY9-Nuaf79BCjJ4h7nq-XiskGwC2sUtvFdT4X-EHAnW7mOHkTtIEBF76tw8N8YCQ6jP19aYL7k-VVzLq0mulPmRDf2UqRv2pxOgJNGRu4qciEP38kRbXr1FqlBNSQ6HNkNkJ89GV51VERodLFRE_ozaB9pJZSP8sT5TmvHdVrQ-J_5QGfA6rEiXBgogpIP0mfGEB5qozhrm46V0DLi5BmytX_88QDPEG6PiEEkCnDclWNy8rezSRCNsc8N7cdckI0JqKfg3GGixpSNUswvsp-O-DJyL3V15uRPs0vZlDXjymdtLe_ql-DAJ_I5aG93RczTH7hxo8zWFkRp4dR47HTJdT16P9CpM6XEL3JNR8EHT-V2EIiGmmOEgUeZlRBrkxuH8t0dUq2IHnR3z2YNzRao0197NMJ-wujhh0a3aRtihFUjsblYSZ04By-yr58Wy70xcojO_X0NZHeXecZe0kkM2h6v1KxMl9m8ljQNkxDNKxbVAJRZw_VtJVQM8VlBRpWJPA4lHFEetmFdgr9-GcCBY4ImBoKtHJbxxbDSCZxB2JWGTuAZvqvLHTuQWAQrpEfVpWMn1ZMMhcRUogrxyLDXByglyKBl5F0i9xnjyvwLWIROf4SoFFS9FRxj6nkq5caDhNpJKn2wrlJ3tkIjdL_k4Y-JibRIH4KlXtVQx325ExsxGthv81yhno5XeYknjLbzTF0skK5hpT641ZSRovkWNQJ3_rPO5UGOCOJ73wBfCEVPwaIiVEJYiginYh0DLPsZEJ8ibrKSPNqfQxx4ggEYMfr_C89r-fhIwN1KXbNFqypnLjELcJJpbwZ6-ZyZ73cB6dq4EJHiEeF06o0BCORNLjnWOLqYXv43OEUKPm-tUFpdAPyqG4cskhDZ7_VnW8_MWjEVGUIv4Yau4Vu36Dk5U9uCBT2-d8IkvY_dlG2bc3FC4xFYRcLgHDsZYUb9JuV-K9PKcM7EOYkhaeTdmywHb8EZx99rx8-1gH5zulDzYESBgYUuge_YfJwjh_5S0rGMxX6Uu99L1ANZGIcdrUWVaHmMxVgzrcJnhtPC0R7sdRy1tgafSr-0sjgTXbtqfT3d7zEZh0_13_xk94CbJa5F-SzzRhzHzuqdMH0Tbwbut0NuAn_HCiqgP4NzeAbUfUsoi-5wpy5e0IlcxIXEvpICOiv6AC9CtpIRizuiAEh3gA0n_BC6TVqpffmrBtnyNTxAMM9_LQ3Xn_sw-RV1XEJy32vFvCqjq2lT-fZB3TtAacqvjtZ_xBvMgAstTChxcm97KSif6RpoEaSxH94uIAv2YaLrLcqZuH7jWtUy0tXbWUzSJlrZ52yAYar0LPizeR1gG68BXsO09l6KiOcRDSeHLwoPI3J1iBYwT8f3ElttHV5wcOc.BR-1pEphlBgcHpZ8DGypatvPpnTXWAwYYEzAlhHeWm8",
+      "not-before-policy": 0,
+      "session_state": "9ac34118-5ba1-4f6a-a90e-7290f28952ff",
+      "scope": "openid profile email"
+    }
+  },
+  "stderr": ""
+}
+```
+
 #### Get Produk:
 
  - Contoh Request Simpel Python
