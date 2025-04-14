@@ -12,14 +12,14 @@
 ```json
 {
   "Content-Type": "application/json",
-  "Authorization": "0a1ccba4-e6fc-498c-af2f-5f889c765aaa"
+  "Authorization": "api-key" //Chat admin
 }
 ```
 
 #### Header Endpoint Get Produk:
 ```json
 {
-  "Authorization": "0a1ccba4-e6fc-498c-af2f-5f889c765aaa"
+  "Authorization": "api-key" //Chat admin
 }
 ```
 
@@ -33,7 +33,7 @@ import requests
 
 url = "https://api.tuyull.my.id/api/v1/produk"
 headers = {
-    "Authorization": "0a1ccba4-e6fc-498c-af2f-5f889c765aaa"
+    "Authorization": "api-key" //Chat admin
 }
 
 response = requests.get(url, headers=headers)
@@ -81,7 +81,7 @@ url = "https://api.tuyull.my.id/api/v1/dor"
 
 headers = {
     "Content-Type": "application/json",
-    "Authorization": "0a1ccba4-e6fc-498c-af2f-5f889c765aaa"
+    "Authorization": "api-key" //Chat admin
 }
 
 payload = {
