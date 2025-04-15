@@ -113,7 +113,7 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
 ```
 </details>
 
-<details> <summary>2. Cara Pembelian dan rubah password pembelian (klik untuk lihat)</summary>
+<details> <summary>3. Cara Pembelian dan rubah password pembelian (klik untuk lihat)</summary>
 
  - Rubah Password Pembelian
 
