@@ -20,9 +20,10 @@
 ```
 </details>
 
-### **2. Cara Request Endpoint**
+<details> <summary>2. Cara Login Nomor (klik untuk lihat)</summary>
 
-#### - Minta Otp
+ - Minta Otp
+
  - Contoh Request simpel python
 ```python
 import requests
@@ -38,7 +39,7 @@ response = requests.get(url, headers=headers)
 print(f"Response : {response})
 ```
 
-#### Deskripsi:
+ - Deskripsi:
 Rubah nomor_hp yang mau minta kode otp
 
  - Contoh Respon Sukses
@@ -67,7 +68,7 @@ Rubah nomor_hp yang mau minta kode otp
 }
 ```
 
-#### - Verifikasi otp
+ - Verifikasi otp
 
  - Contoh Request
 ```python
@@ -84,7 +85,7 @@ response = requests.get(url, headers=headers)
 print(f"Response : {response})
 ```
 
-#### Deskripsi:
+ - Deskripsi:
 Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di dapatkan di sms
 
  - Contoh Respon sukses
@@ -110,6 +111,7 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
   "stderr": ""
 }
 ```
+</details>
 
 #### - Rubah Password Pembelian
 
