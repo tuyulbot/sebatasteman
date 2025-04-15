@@ -207,8 +207,8 @@ payload = {
     "nama_paket": "Xtra Combo Spesial 8GB", # nama paket di ambil dri respon get produk (nama_paket)
     "nomor_hp": "087777334618", # nomor hp bisa input dengan format (08 / 628)
     "payment": "nganu", # payment di ambil dri respon get produk ambil salah satu contoh: dana/pulsa atau yang lain 
-    "id_telegram": "7902668644", # id_telegram di wajibkan terdaftar di bot dan ada saldonya:v
-    "password": "tuyulbot" # Password minta ke admin 
+    "id_telegram": "7902668", # id_telegram di wajibkan terdaftar di bot dan ada saldonya:v
+    "password": "tuyul" # Password minta ke admin 
 }
 
 response = requests.post(url, headers=headers, data=json.dumps(payload))
