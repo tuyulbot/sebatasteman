@@ -1,6 +1,7 @@
 ###        Dokumentasi api wong gabut
 
-### **1. Persiapan yang di butuhkan**
+### <details>
+<summary>1. Persiapan yang di butuhkan (klik untuk lihat)</summary>
 
 #### URL Api
   - **https://api.tuyull.my.id/**
@@ -19,7 +20,7 @@
   "Authorization": "api-key" //Chat admin
 }
 ```
-
+</details> ```
 ### **2. Cara Request Endpoint**
 
 #### - Minta Otp
