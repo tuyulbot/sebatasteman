@@ -122,7 +122,7 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
 import requests
 
 # URL dan headers
-url = 'https://api.tuyull.my.id/api/v1/ubah-password?id_telegram=2233444&password_baru=tested
+url = 'https://api.tuyull.my.id/api/v1/ubah-password?id_telegram=2233444&password_lama=nganuu&password_baru=tested
 headers = {
     'Authorization': "api-key" #Chat admin
 }
@@ -133,7 +133,7 @@ print(f"Response : {response})
 ```
 
  - Deskripsi:
-Masukan id_telegram dan password baru anda dan simpan password anda secara aman jangan di kasih tau sama orang lain
+Masukan id_telegram, masukan password_lama ( chat admin untuk mendapatkan pw lama ), masukan password_baru anda dan simpan password anda secara aman jangan di kasih tau sama orang lain
 
     - Contoh Respon Succes
 ```json
