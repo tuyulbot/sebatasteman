@@ -113,9 +113,11 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
 ```
 </details>
 
-#### - Rubah Password Pembelian
+<details> <summary>2. Cara Pembelian dan rubah password pembelian (klik untuk lihat)</summary>
 
- - Contoh Request Simpel Python
+ - Rubah Password Pembelian
+
+    - Contoh Request Simpel Python
 ```python
 import requests
 
@@ -130,10 +132,10 @@ response = requests.get(url, headers=headers)
 print(f"Response : {response})
 ```
 
-#### Deskripsi:
+ - Deskripsi:
 Masukan id_telegram dan password baru anda dan simpan password anda secara aman jangan di kasih tau sama orang lain
 
- - Contoh Respon Succes
+    - Contoh Respon Succes
 ```json
 {
   "status": "success",
@@ -141,9 +143,9 @@ Masukan id_telegram dan password baru anda dan simpan password anda secara aman 
 }
 ```
 
-#### - Get Produk:
+ - Get Produk:
 
- - Contoh Request Simpel Python
+    - Contoh Request Simpel Python
 ```python
 import requests
 
@@ -159,7 +161,7 @@ print(response.status_code)
 print(response.json())
 ```
 
- - Contoh Respon Succes
+    - Contoh Respon Succes
 ```json
 {
   "status": "success",
@@ -182,13 +184,13 @@ print(response.json())
   ]
 }
 ```
-#### Deskripsi Get Produk:
+ - Deskripsi Get Produk:
 parsing json dari respon endpoint get produk dan ambil data nama_paket, harga_panel, kode_buy, payment_suport untuk digunakan proses endpoint post pembelian
 
 
-#### - Post Pembelian:
+ - Post Pembelian:
 
- - Contoh Request Simpel Python
+    - Contoh Request Simpel Python
 ```python
 import requests
 import json
@@ -215,7 +217,7 @@ print(response.status_code)
 print(response.json())
 ```
 
- - Contoh respon sukses pembelian payment dana misal
+    - Contoh respon sukses pembelian payment dana misal
 ```json
 {
   "status": "success",
@@ -280,10 +282,10 @@ print(response.json())
 }
 ```
 
-#### Deskripsi
+ - Deskripsi
 parsing json respon pada api pembelian ambil bagian deplink untuk proses pembayaran contoh dana, payment lain sama ambil deplinknya 
 
- - Contoh request sukses pembelian payment pulsa
+    - Contoh request sukses pembelian payment pulsa
 ```json
 {
   "status": "success",
@@ -337,5 +339,6 @@ parsing json respon pada api pembelian ambil bagian deplink untuk proses pembaya
 }
 ```
 
-#### Deskripsi
+ - Deskripsi
 Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian sukses
+</details>
