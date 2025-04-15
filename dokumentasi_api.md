@@ -1,10 +1,10 @@
 ###        Dokumentasi api wong gabut
 
 <details> <summary>1. Persiapan yang dibutuhkan (klik untuk lihat)</summary>
-URL API
-https://api.tuyull.my.id/
+  -URL API:
+    https://api.tuyull.my.id/
 
-Header:
+  - Header:
 ```json
 {
   "Content-Type": "application/json",
@@ -12,7 +12,7 @@ Header:
 }
 ```
 
-Header:
+  - Header:
 ```json
 {
   "Authorization": "api-key" //Chat admin
