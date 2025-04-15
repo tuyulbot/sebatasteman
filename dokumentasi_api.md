@@ -24,7 +24,7 @@
 
  - Minta Otp
 
- - Contoh Request simpel python
+    - Contoh Request simpel python
 ```python
 import requests
 
@@ -42,7 +42,7 @@ print(f"Response : {response})
  - Deskripsi:
 Rubah nomor_hp yang mau minta kode otp
 
- - Contoh Respon Sukses
+    - Contoh Respon Sukses
 ```json
 {
   "status": "success",
@@ -70,7 +70,7 @@ Rubah nomor_hp yang mau minta kode otp
 
  - Verifikasi otp
 
- - Contoh Request
+    - Contoh Request
 ```python
 import requests
 
@@ -88,7 +88,7 @@ print(f"Response : {response})
  - Deskripsi:
 Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di dapatkan di sms
 
- - Contoh Respon sukses
+    - Contoh Respon sukses
 ```json
 {
   "status": "success",
