@@ -75,7 +75,7 @@ Rubah nomor_hp yang mau minta kode otp
 import requests
 
 # URL dan headers
-url = 'https://api.tuyull.my.id/api/v1/minta-otp?nomor_hp=0877773346&kode_otp=876677
+url = 'https://api.tuyull.my.id/api/v1/verif-otp?nomor_hp=0877773346&kode_otp=876677
 headers = {
     'Authorization': "api-key" #Chat admin
 }
