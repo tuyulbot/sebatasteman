@@ -348,21 +348,21 @@ Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian s
   - Post Pembelian Add on Satuan:
 
     - List Kode paket:
-        1. Premium 30 hari
-        2. Super 30 hari
-        3. Standard  30 hari
-        4. Basic  30 hari
-        5. Netflix 
-        6. TikTok 
-        7. YouTube 
-        8. Viu 
-        9. Joox 
-        10. iFlix 
-        11. Vidio (skip gaush di tmbhin gpp)
-        12. Premium 7 hari
-        13. Super 7 hari
-        14. Standard 7 hari
-        15. Basic 7 hari
+        1 . Premium 30 hari
+        2 . Super 30 hari
+        3 . Standard  30 hari
+        4 . Basic  30 hari
+        5 . Netflix 
+        6 .  TikTok 
+        7 . YouTube 
+        8 . Viu 
+        9 . Joox 
+        10 . iFlix 
+        11 . Vidio (skip gaush di tmbhin gpp)
+        12 . Premium 7 hari
+        13 . Super 7 hari
+        14 . Standard 7 hari
+        15 . Basic 7 hari
 
     - Contoh Request Simpel Python
 ```python
@@ -449,16 +449,16 @@ print(response.json())
   - Post Pembelian All Add On:
 
     - List Paket yang di dapat ( jika hoki masuk smua ):
-        1. Premium 30 hari
-        2. Super 30 hari
-        3. Standard  30 hari
-        4. Basic  30 hari
-        5. Netflix 
-        6. TikTok 
-        7. YouTube 
-        8. Viu 
-        9. Joox 
-        10. iFlix 
+        1 . Premium 30 hari
+        2 . Super 30 hari
+        3 . Standard  30 hari
+        4 . Basic  30 hari
+        5 . Netflix 
+        6 .  TikTok 
+        7 . YouTube 
+        8 . Viu 
+        9 . Joox 
+        10 . iFlix 
 
     - Contoh Request Simpel Python
 ```python
