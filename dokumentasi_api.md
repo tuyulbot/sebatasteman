@@ -342,3 +342,207 @@ parsing json respon pada api pembelian ambil bagian deplink untuk proses pembaya
  - Deskripsi
 Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian sukses
 </details>
+
+<details> <summary>4. Pembelian paket add on xcs satuan dan all addon</summary>
+
+  - Post Pembelian Add on Satuan:
+
+    - List Kode paket:
+        1. Premium 30 hari
+        2. Super 30 hari
+        3. Standard  30 hari
+        4. Basic  30 hari
+        5. Netflix 
+        6. TikTok 
+        7. YouTube 
+        8. Viu 
+        9. Joox 
+        10. iFlix 
+        11. Vidio (skip gaush di tmbhin gpp)
+        12. Premium 7 hari
+        13. Super 7 hari
+        14. Standard 7 hari
+        15. Basic 7 hari
+
+    - Contoh Request Simpel Python
+```python
+import requests
+import json
+
+url = "https://api.tuyull.my.id/api/v1/dor"
+
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "api-key" //Chat admin
+}
+
+payload = {
+    "kode": "addon_satuan",  # kode di ambil dri responen get produk (kode_buy)
+    "nama_paket": "Add On XCS Satuan", # nama paket di ambil dri respon get produk (nama_paket)
+    "nomor_hp": "087777334618", # nomor hp bisa input dengan format (08 / 628)
+    "payment": "pulsa", # payment menggunakan pulsa only
+    "id_telegram": "7902668", # id_telegram di wajibkan terdaftar di bot dan ada saldonya:v
+    "password": "tuyul", # Password minta ke admin,
+    "kode_paket": "1" #Kode paket bisa di lihat di List Kode Paket di atas
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+
+print(response.status_code)
+print(response.json())
+```
+
+    - Contoh respon sukses pembelian
+```json
+{
+  "status": "success",
+  "code": 0,
+  "info_saldo_panel": {
+    "id_telegram": "7902668644",
+    "role": "super_reseller",
+    "harga_awal": 100,
+    "diskon": 0,
+    "saldo_dipotong": 100,
+    "saldo_sisa": 6600
+  },
+  "data": {
+    "status": "success",
+    "data": {
+      "code": "000",
+      "status": "SUCCESS",
+      "data": {
+        "benefit_type": "",
+        "can_trigger_rating": false,
+        "deeplink": "",
+        "details": [
+          {
+            "amount": 1000,
+            "campaign_id": "",
+            "code": "U0NfXzQeW2zAAXtWowpia0axznYrgxmwaPtZxPEnes-uzpKJ1LkoqvpFRH_5mwUOvsrM2b1Qgq4iq1rUBbm1q44",
+            "name": "Edukasi 2GB",
+            "status": "SUCCESS",
+            "tax": 0
+          }
+        ],
+        "have_offer": false,
+        "payment_method": "BALANCE",
+        "points_gained": 0,
+        "total_amount": 1000,
+        "total_discount": 0,
+        "total_tax": 0,
+        "transaction_code": "1509410"
+      }
+    },
+    "info_saldo_panel": {
+      "id_telegram": "7902668644",
+      "role": "super_reseller",
+      "harga_awal": 100,
+      "diskon": 0,
+      "saldo_dipotong": 100,
+      "saldo_sisa": 6600
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Post Pembelian All Add On:
+
+    - List Paket yang di dapat ( jika hoki masuk smua ):
+        1. Premium 30 hari
+        2. Super 30 hari
+        3. Standard  30 hari
+        4. Basic  30 hari
+        5. Netflix 
+        6. TikTok 
+        7. YouTube 
+        8. Viu 
+        9. Joox 
+        10. iFlix 
+
+    - Contoh Request Simpel Python
+```python
+import requests
+import json
+
+url = "https://api.tuyull.my.id/api/v1/dor"
+
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "api-key" //Chat admin
+}
+
+payload = {
+    "kode": "all_addon",  # kode di ambil dri responen get produk (kode_buy)
+    "nama_paket": "All Add On XCS", # nama paket di ambil dri respon get produk (nama_paket)
+    "nomor_hp": "087777334618", # nomor hp bisa input dengan format (08 / 628)
+    "payment": "pulsa", # payment menggunakan pulsa only
+    "id_telegram": "7902668", # id_telegram di wajibkan terdaftar di bot dan ada saldonya:v
+    "password": "tuyul" # Password minta ke admin,
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(payload))
+
+print(response.status_code)
+print(response.json())
+```
+
+    - Contoh respon
+```json
+{
+  "status": "processing",
+  "message": "Proses pembelian sedang berjalan, gunakan processId untuk cek status.",
+  "processId": "c180e97b-8af0-4628-aa00-db231a191b40"
+}
+```
+    - Deskripsi
+Simpan "processId": "c180e97b-8af0-4628-aa00-db231a191b40" untuk pengecekan status proses pembelian sudah sukses apa blom
+
+    - Pengeceakn proses pembelian khusus all add on 
+
+- Contoh Request Simpel Python
+```python
+import requests
+
+url = "https://api.tuyull.my.id/api/v1/dor/status/(ganti dengan prosessId yang di dapat)"
+headers = {
+    "Authorization": "api-key" //Chat admin
+}
+
+response = requests.get(url, headers=headers)
+
+# Tampilkan hasil respons
+print(response.status_code)
+print(response.json())
+```
+
+    - Contoh respon jika proses pembelian sukses
+```json
+{
+  "status": "success",
+  "processId": "c180e97b-8af0-4628-aa00-db231a191b40",
+  "result": {
+    "status": "success",
+    "data": {
+      "summary": [
+        "1. Premium (done)",
+        "2. Super (done)",
+        "3. Standard (done)",
+        "4. Basic (done)",
+        "5. Netflix (done)",
+        "6. TikTok (done)",
+        "7. YouTube (done)",
+        "8. Viu (done)",
+        "9. Joox (done)",
+        "10. iFlix (done)",
+        "11. (SKIPPED)"
+      ],
+      "note": "Langsung membeli paket xcs 8gb"
+    }
+  },
+  "created_at": "2025-05-27T21:07:09.000Z",
+  "updated_at": "2025-05-27T21:11:09.000Z"
+}
+```
+
+</details>
