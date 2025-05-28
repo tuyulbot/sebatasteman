@@ -111,6 +111,32 @@ Rubah nomor_hp yang sebelomnya pas request minta-otp dan rubah kode_otp yang di 
   "stderr": ""
 }
 ```
+
+- Cek Login:
+
+    - Contoh Request Simpel Python
+```python
+import requests
+
+url = "https://api.tuyull.my.id/api/v1/cek-login?nomor=(ganti dengan nomor yang mau di cek)"
+headers = {
+    "Authorization": "api-key" //Chat admin
+}
+
+response = requests.get(url, headers=headers)
+
+# Tampilkan hasil respons
+print(response.status_code)
+print(response.json())
+```
+
+    - Contoh Respon Succes
+```json
+{
+  "status": "success",
+  "message": "Nomor sudah login"
+}
+```
 </details>
 
 <details> <summary>3. Cara Pembelian dan rubah password pembelian (klik untuk lihat)</summary>
