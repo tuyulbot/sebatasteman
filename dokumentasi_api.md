@@ -545,4 +545,59 @@ print(response.json())
 }
 ```
 
+- History pembelian khusus all add on
+
+- Contoh Request Simpel Python
+```python
+import requests
+
+url = "https://api.tuyull.my.id/api/v1/dor/history/(ganti dengan id telegram yang di pake saat pembelian)"
+headers = {
+    "Authorization": "api-key" //Chat admin
+}
+
+response = requests.get(url, headers=headers)
+
+# Tampilkan hasil respons
+print(response.status_code)
+print(response.json())
+```
+
+    - Contoh respon jika proses pembelian sukses
+```json
+{
+  "status": "success",
+  "history": [
+    {
+      "processId": "6742a2d7-7945-4b79-96e8-a4301d913efd",
+      "nomorHp": "087777334614",
+      "namaPaket": "All Add On XCS",
+      "status": "success",
+      "saldoDipotong": 14000,
+      "result": {
+        "status": "success",
+        "data": {
+          "summary": [
+            "1. Premium (done)",
+            "2. Super (done)",
+            "3. Standard (done)",
+            "4. Basic (done)",
+            "5. Netflix (done)",
+            "6. TikTok (done)",
+            "7. YouTube (done)",
+            "8. Viu (done)",
+            "9. Joox (done)",
+            "10. iFlix (done)",
+            "11. (SKIPPED)"
+          ],
+          "note": "Langsung membeli paket xcs 8gb"
+        }
+      },
+      "createdAt": "2025-05-28T03:23:18.000Z",
+      "updatedAt": "2025-05-28T03:27:21.000Z"
+    }
+    ]
+}
+```
+
 </details>
