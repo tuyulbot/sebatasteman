@@ -1,67 +1,51 @@
-# PPOB API (High Performance, Asynchronous, FastAPI + MySQL)
+```markdown
+# PPOB API High Performance
 
-API sederhana untuk transaksi pembelian produk PPOB, inquiry status, dan riwayat transaksi, berbasis FastAPI (Python) dan MySQL.  
-Dirancang untuk mendukung ratusan user secara concurrent (asynchronous & high performance).
+API berbasis FastAPI untuk transaksi PPOB (pulsa/token listrik/produk digital), mendukung autentikasi API-Key yang aman, sistem user, business logic async siap ratusan concurrent user, dan response data konsisten JSON. Disiapkan untuk production dengan basis MySQL.
 
 ---
 
-## STRUKTUR FOLDER
+## Struktur Direktori
 
 ```
 ppob-api/
-├── app.py        # API utama (FastAPI + MySQL + worker async)
-├── proses.py     # Simulasi eksekusi proses PPOB eksternal
-├── README.md     # Dokumentasi instalasi & penggunaan
+├── app.py        # API utama (endpoint, authentikasi, response wrapper)
+├── utils.py      # Generator API Key, hash function
+├── proses.py     # Dummy proses PPOB eksternal (optional, custom logic di sini)
+├── .env          # Config koneksi DB (jangan commit ke repo public!)
+└── README.md     # Dokumentasi ini
 ```
 
 ---
 
-## 1. PERSYARATAN
+## 1. Install Dependencies
 
-- **Python 3.8+**
-- **MySQL / MariaDB** aktif sebagai database
-- Privilege untuk create database dan tabel
-- Internet untuk install dependensi Python
+Buat virtualenv (opsional), lalu install:
 
----
-
-## 2. INSTALL DEPENDENSI PYTHON
-
-Jalankan perintah berikut di terminal/cmd pada folder `ppob-api`:
-
-```
-pip3 install fastapi uvicorn aiomysql python-dotenv
+```bash
+pip install requirements.txt
 ```
 
 ---
 
-## 3. INISIALISASI DATABASE MYSQL
+## 2. Konfigurasi Database
 
-Login ke MySQL, lalu jalankan SQL berikut untuk membuat dan seed database:
+### .env contoh:
+
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=ppob
+```
+
+### SQL Struktur Database
 
 ```sql
 CREATE DATABASE IF NOT EXISTS ppob CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE ppob;
 
-CREATE TABLE IF NOT EXISTS produk (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nama VARCHAR(50),
-  harga INT,
-  deskripsi TEXT
-);
-
-CREATE TABLE IF NOT EXISTS transaksi (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  produk_id INT,
-  nomor_tujuan VARCHAR(30),
-  nominal INT,
-  status ENUM('pending','proses','sukses','gagal'),
-  waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  hasil_eksekusi TEXT,
-  FOREIGN KEY (produk_id) REFERENCES produk(id)
-);
-
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE user (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nama VARCHAR(50) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
@@ -72,6 +56,25 @@ CREATE TABLE IF NOT EXISTS user (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE produk (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nama VARCHAR(50),
+  harga INT,
+  deskripsi TEXT
+);
+
+CREATE TABLE transaksi (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  trx_id VARCHAR(20) NOT NULL UNIQUE,
+  produk_id INT,
+  nomor_tujuan VARCHAR(20),
+  nominal INT,
+  status VARCHAR(20),
+  hasil_eksekusi TEXT,
+  waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Seed sample produk PPOB
 INSERT INTO produk (nama, harga, deskripsi) VALUES
 ('Pulsa 10k', 12000, 'Pulsa Reguler 10.000'),
 ('Pulsa 20k', 22000, 'Pulsa Reguler 20.000'),
@@ -79,25 +82,19 @@ INSERT INTO produk (nama, harga, deskripsi) VALUES
 ON DUPLICATE KEY UPDATE nama=VALUES(nama);
 ```
 
-> **JANGAN LUPA:**  
-> Ubah konfigurasi database MySQL jika perlu: `host`, `user`, `password`, di dalam file `app.py` bagian variable `DB_CONFIG`.
-
 ---
 
-## 4. MENJALANKAN API
+## 3. Menjalankan Server
 
-Pastikan berada di dalam folder `ppob-api`, lalu jalankan:
-
-```
+```bash
 uvicorn app:app --reload
 ```
-
-- Jika ingin listen di public (deploy server):  
-  `uvicorn app:app --host 0.0.0.0 --port 8000 --workers 4`
+Akses di http://localhost:8000  
+Swagger documentasi otomatis: http://localhost:8000/docs
 
 ---
 
-## 5. ENDPOINTS API
+## 4. Endpoint & Contoh Request
 
 | Endpoint           | Method | Deskripsi                                    |
 |--------------------|--------|----------------------------------------------|
@@ -106,192 +103,165 @@ uvicorn app:app --reload
 | /status/{trx_id}   | GET    | Lihat status & hasil satu transaksi          |
 | /riwayat           | GET    | Lihat riwayat transaksi terakhir (100 data)  |
 | /generate-key      | POST   | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
-| `/register`        | POST   | Registrasi user API, generate API/privkey |
+| /register          | POST   | Registrasi user API, generate API/privkey |
 
-### Contoh Request:
+### 1. Register User (`/register`)
 
-`POST /register`
+**POST /register**
 
-**Request Body (JSON):**
 ```json
 {
-    "nama": "Budi Santoso",
-    "email": "budi@mail.com",
-    "hp": "08123456789",
-    "saldo": 0
+  "nama": "Rama",
+  "email": "rama@email.com",
+  "hp": "081212xxxxxx"
 }
 ```
-- `nama` *(string, required)*: Nama Lengkap user
-- `email` *(string, required)*: Email user (harus unique)
-- `hp` *(string, optional)*: Nomor HP (boleh kosong)
-- `saldo` *(number, optional)*: Saldo awal (default 0, opsional)
-
-#### **Response**
-
-HTTP 200 Success:
+**Response:**
 ```json
 {
-    "api_key": "cf68e...a109f",         // Token API untuk akses endpoint lain (header)
-    "private_key": "fac21...4fa2f",     // Token private, tampil hanya sekali!
-    "info": "API Key dan Private Key simpan baik-baik, hanya tampil saat register."
+  "code": 201,
+  "status": "success",
+  "message": "Registrasi sukses",
+  "data": {
+    "api_key": "...",
+    "private_key": "...",
+    "info": "API Key dan Private Key hanya tampil saat register! Simpan baik-baik."
+  }
 }
 ```
-> **Note:**  
-> - Simpan baik-baik `api_key` dan `private_key` (private_key hanya ditampilkan sekali saat register, tidak bisa diambil ulang).
-> - `api_key` digunakan untuk akses seluruh endpoint, dikirim via header:  
->   ```
->   x-api-key: <api_key>
->   ```
-> - Jika email sudah terpakai, akan return error 409 Conflict.
 
----
+### 2. Generate ulang API Key/private key (`/generate-key`)
 
-### **Contoh Curl Request**
+**POST /generate-key**  
+Header:  
+`x-api-key: <api_key_lama>`
 
-```bash
-curl -X POST http://localhost:8000/register \
--H "Content-Type: application/json" \
--d '{
-    "nama": "Budi Santoso",
-    "email": "budi@mail.com",
-    "hp": "08123456789"
-}'
+**Response:**
+```json
+{
+  "code": 201,
+  "status": "success",
+  "message": "API Key dan Private Key telah diperbarui.",
+  "data": {
+    "api_key": "...",
+    "private_key": "...",
+    "info": "Yang lama sudah tidak berlaku. Simpan baik-baik!"
+  }
+}
 ```
+
+### 3. List Produk (`/produk`)
+
+**GET /produk**  
+Header: `x-api-key: ...`
+```json
+{
+  "code": 200,
+  "status": "success",
+  "message": "Daftar produk",
+  "data": [
+    {
+      "id": 1,
+      "nama": "Pulsa 10k",
+      "harga": 12000,
+      "deskripsi": "Pulsa Reguler 10.000"
+    }
+    // ...
+  ]
+}
+```
+
+### 4. Beli Produk (`/beli`)
+
+**POST /beli**  
+Header: `x-api-key: ...`
+```json
+{
+  "produk_id": 2,
+  "nomor_tujuan": "081212xxxx",
+  "nominal": 20000
+}
+```
+**Response:**
+```json
+{
+  "code": 200,
+  "status": "success",
+  "message": "Transaksi berhasil dibuat",
+  "data": {
+    "id": "HIDEBOT123456",
+    "status": "pending"
+  }
+}
+```
+
+### 5. Cek Status Transaksi (`/status/{trx_id}`)
+
+**GET /status/HIDEBOT123456**  
+Header: `x-api-key: ...`
 
 **Response jika sukses:**
 ```json
 {
-    "api_key": "270ae3ec3bccc524ab84f2a5995687b1b48ea5b99204b7c5ad2fcbf4ad1de832",
-    "private_key": "f7ad44e72ccb6828e10fd549396eb412ae2b8df3ef17d628dce86f62152b0b24",
-    "info": "API Key dan Private Key simpan baik-baik, hanya tampil saat register."
+  "code": 200,
+  "status": "success",
+  "message": "Status transaksi ditemukan",
+  "data": {
+    "trx_id": "HIDEBOT123456",
+    "produk_id": 2,
+    "nomor_tujuan": "081212xxxx",
+    "nominal": 20000,
+    "status": "sukses",
+    "hasil_eksekusi": "...",
+    "waktu": "2024-06-09T12:34:56"
+  }
 }
 ```
 
----
-
-### **Error Response Sample**
-Jika email sudah pernah terdaftar:
+**Response jika tidak ada:**
 ```json
 {
-    "detail": "User/email sudah terdaftar"
+  "code": 404,
+  "status": "error",
+  "message": "Transaksi tidak ditemukan",
+  "data": null
 }
 ```
 
----
+### 6. Riwayat Transaksi (`/riwayat`)
 
-### **Lanjutan:**
-
-Setelah berhasil register, gunakan API-Key pada setiap request ke endpoint lain, misalnya:
-
-```bash
-curl -H "x-api-key: 270ae3ec..." http://localhost:8000/produk
-```
-
----
-
-### **Ringkasan**
-
-- Register user (POST /register), dapet api_key & private_key.
-- Simpan baik-baik output response.
-- Gunakan api_key pada header `x-api-key` agar bisa akses endpoint selanjutnya (termasuk generate-key, /produk, /beli, /status, /riwayat, dll).
-
-
-**POST /beli**
-
-Headers:
-x-api-key: <api_key>
-
-Body JSON:
+**GET /riwayat**  
+Header: `x-api-key: ...`
 ```json
 {
-  "produk_id": 1,
-  "nomor_tujuan": "08123456789",
-  "nominal": 10000
+  "code": 200,
+  "status": "success",
+  "message": "Riwayat transaksi",
+  "data": [
+    // list transaksi user (max 100)
+  ]
 }
 ```
 
-Response:
-```json
-{
-  "id": 4,
-  "status": "pending"
-}
+---
+
+## 5. Catatan Keamanan & Pengembangan
+
+- Hanya `api_key` yang dikirim di Header pada setiap request.
+- Endpoint proteksi: Semuanya wajib autentikasi API-Key, hanya `/register` yang free.
+- Kunci lama akan digantikan jika generate key baru.
+- Untuk production, tambahkan rate limit, logging, dsb sesuai best-practices API.
+- Proses logic PPOB pada `proses.py` bisa diganti dengan logic real PPOB sesuai integrasi provider-mu.
+
+---
+
+## 6. Kontribusi & Lisensi
+
+Silakan gunakan, modifikasi, dan distribusikan sesuai kebutuhan.  
+Open source, for community!
+
+---
+
+Happy coding 🚀
 ```
-
-**GET /status/4**
-
-Headers:
-x-api-key: <api_key>
-
-Response:
-```json
-{
-  "id": 4,
-  "produk_id": 1,
-  "nomor_tujuan": "08123456789",
-  "nominal": 10000,
-  "status": "sukses",
-  "waktu": "...",
-  "hasil_eksekusi": "Transaksi PPOB berhasil! ..."
-}
-```
-
-**POST /generate-key**
-Headers:
-x-api-key: <api_key_lama>
-
-Response:
-```json
-{
-    "api_key": "...",
-    "private_key": "...",
-    "info": "API Key dan Private Key telah diperbarui. Simpan baik-baik."
-}
-```
-
-Semua endpoint bisa dicoba langsung lewat:
-[http://localhost:8000/docs](http://localhost:8000/docs)
-
 ---
-
-## 6. LOGIKA FILE proses.py
-
-`app.py` menjalankan `proses.py` (secara async) setiap ada permintaan pembelian.  
-File ini mensimulasikan transaksi PPOB dengan delay beberapa detik dan hasil random (sukses/gagal).
-
-**Modifikasi saja proses.py sesuai kebutuhan integrasi PPOB asli-mu.**
-
----
-
-## 7. TROUBLESHOOTING
-
-- Koneksi database gagal?  
-  - Pastikan MySQL sudah berjalan.
-  - Sesuaikan DB_CONFIG di app.py.
-- Tidak ada produk?  
-  - Cek tabel produk di database sudah terisi.
-- Port 8000 bentrok?  
-  - Ganti argumen port uvicorn.
-
----
-
-## 8. PENGEMBANGAN LANJUTAN
-
-- Ingin fitur otentikasi JWT?  
-- Ingin ada endpoint tambah produk?
-- Ingin filter histori by user?
-
-Tinggal tambahkan di dalam FastAPI, atau request pada author repo ini!
-
----
-
-## 9. KONTRIBUSI
-
-Bebas digunakan, sharing, dikembangkan open source.  
-Kredensial dan password sebaiknya amankan bila deploy production.
-
----
-
-Happy coding & semoga bermanfaat!
-
-```
