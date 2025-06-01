@@ -3,7 +3,6 @@
 
 API berbasis FastAPI untuk transaksi PPOB (pulsa/token listrik/produk digital), mendukung autentikasi API-Key yang aman, sistem user, business logic async siap ratusan concurrent user, dan response data konsisten JSON. Disiapkan untuk production dengan basis MySQL.
 
----
 
 ## Struktur Direktori
 
