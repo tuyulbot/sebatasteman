@@ -95,16 +95,16 @@ Swagger documentasi otomatis: http://localhost:8000/docs
 
 ## 4. Endpoint & Contoh Request
 
-| Endpoint           | Method | x-api-key | Deskripsi                                    |
-|--------------------|--------|----------------------------------------------|
-| /register          | POST   |  FALSE    | Registrasi user API, Lanjut proses /verif-otp    |
-| /verif-otp         | POST   |  FALSE    | Verifikasi OTP untuk registrasi user API    |
-| /generate-key      | POST   |  TRUE     | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
-| /produk            | GET    |  TRUE     | List semua produk PPOB                       |
-| /cek-produk/{kode_produk}   | GET    |  TRUE    | Detail produk PPOB dengan id tertenu         |
-| /beli              | POST   |  TRUE     | Mulai transaksi pembelian PPOB               |
-| /status/{trx_id}   | GET    |  TRUE     | Lihat status & hasil satu transaksi          |
-| /riwayat           | GET    |  TRUE     | Lihat riwayat transaksi terakhir (100 data)  |
+| Endpoint                          | Method | x-api-key | Deskripsi                                      |
+|-----------------------------------|--------|-----------|------------------------------------------------|
+| /register                         | POST   | FALSE     | Registrasi user API, lanjut proses /verif-otp |
+| /verif-otp                        | POST   | FALSE     | Verifikasi OTP untuk registrasi user API      |
+| /generate-key                     | POST   | TRUE      | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
+| /produk                           | GET    | TRUE      | List semua produk PPOB                        |
+| /cek-produk/{kode_produk}        | GET    | TRUE      | Detail produk PPOB dengan id tertentu         |
+| /beli                             | POST   | TRUE      | Mulai transaksi pembelian PPOB                |
+| /status/{trx_id}                 | GET    | TRUE      | Lihat status & hasil satu transaksi            |
+| /riwayat                          | GET    | TRUE      | Lihat riwayat transaksi terakhir (100 data)   |
 
 ### 1. Register User (`/register`)
 
