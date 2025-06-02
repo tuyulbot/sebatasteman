@@ -54,30 +54,29 @@ CREATE TABLE user (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE produk (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nama VARCHAR(50),
-  harga INT,
-  deskripsi TEXT
+CREATE TABLE IF NOT EXISTS produk (
+    id INT AUTO_INCREMENT PRIMARY KEY,                  -- Kolom id untuk keperluan lain (jika diperlukan)
+    kode_produk VARCHAR(20),  -- Kode produk sebagai primary key
+    nama VARCHAR(50) NOT NULL,              -- Nama produk
+    plp VARCHAR(20),                        -- Kolom untuk menyimpan huruf, angka, simbol
+    plp_nomor VARCHAR(20),                  -- Nomor PLP
+    harga INT NOT NULL,                      -- Harga produk
+    deskripsi TEXT                          -- Deskripsi produk
 );
 
 CREATE TABLE transaksi (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  trx_id VARCHAR(20) NOT NULL UNIQUE,
-  produk_id INT,
-  nomor_tujuan VARCHAR(20),
-  nominal INT,
-  status VARCHAR(20),
-  hasil_eksekusi TEXT,
-  waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    trx_id VARCHAR(20) NOT NULL UNIQUE,
+    kode_produk VARCHAR(20),
+    nomor_tujuan VARCHAR(20),
+    status VARCHAR(20),
+    hasil_eksekusi TEXT,
+    nama_produk VARCHAR(50),
+    nama_user VARCHAR(50),
+    email_user VARCHAR(100),
+    sisa_saldo INT DEFAULT NULL,
+    waktu TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
--- Seed sample produk PPOB
-INSERT INTO produk (nama, harga, deskripsi) VALUES
-('Pulsa 10k', 12000, 'Pulsa Reguler 10.000'),
-('Pulsa 20k', 22000, 'Pulsa Reguler 20.000'),
-('Token Listrik 50k', 51000, 'Token Listrik Prabayar 50.000')
-ON DUPLICATE KEY UPDATE nama=VALUES(nama);
 ```
 
 ---
@@ -96,12 +95,13 @@ Swagger documentasi otomatis: http://localhost:8000/docs
 
 | Endpoint           | Method | Deskripsi                                    |
 |--------------------|--------|----------------------------------------------|
+| /register          | POST   | Registrasi user API, generate API/privkey    |
+| /generate-key      | POST   | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
 | /produk            | GET    | List semua produk PPOB                       |
+| /cek-produk/{kode_produk}       | GET    | Detail produk PPOB dengan id tertenu         |
 | /beli              | POST   | Mulai transaksi pembelian PPOB               |
 | /status/{trx_id}   | GET    | Lihat status & hasil satu transaksi          |
 | /riwayat           | GET    | Lihat riwayat transaksi terakhir (100 data)  |
-| /generate-key      | POST   | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
-| /register          | POST   | Registrasi user API, generate API/privkey |
 
 ### 1. Register User (`/register`)
 
@@ -175,9 +175,8 @@ Header: `x-api-key: ...`
 Header: `x-api-key: ...`
 ```json
 {
-  "produk_id": 2,
-  "nomor_tujuan": "081212xxxx",
-  "nominal": 20000
+  "kode_produk": "XCV12YT",
+  "nomor_tujuan": "081212xxxx"
 }
 ```
 **Response:**
@@ -187,8 +186,12 @@ Header: `x-api-key: ...`
   "status": "success",
   "message": "Transaksi berhasil dibuat",
   "data": {
-    "id": "HIDEBOT123456",
-    "status": "pending"
+    "id":"HIDEBOT993666",
+    "kode-produk":"XCVYT12",
+    "nomor-tujuan":"081212xxxx",
+    "nama-produk":"Xtra Combo YouTube 1 Tahun",
+    "status":"pending",
+    "info":"Proses transaksi sedang berjalan, cek status untuk hasilnya."
   }
 }
 ```
