@@ -51,6 +51,8 @@ CREATE TABLE user (
   saldo INT DEFAULT 0,
   api_key VARCHAR(64) NOT NULL UNIQUE,
   private_key VARCHAR(64) NOT NULL,
+  otp VARCHAR(6) DEFAULT NULL,
+  is_verified BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -93,15 +95,16 @@ Swagger documentasi otomatis: http://localhost:8000/docs
 
 ## 4. Endpoint & Contoh Request
 
-| Endpoint           | Method | Deskripsi                                    |
+| Endpoint           | Method | x-api-key | Deskripsi                                    |
 |--------------------|--------|----------------------------------------------|
-| /register          | POST   | Registrasi user API, generate API/privkey    |
-| /generate-key      | POST   | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
-| /produk            | GET    | List semua produk PPOB                       |
-| /cek-produk/{kode_produk}       | GET    | Detail produk PPOB dengan id tertenu         |
-| /beli              | POST   | Mulai transaksi pembelian PPOB               |
-| /status/{trx_id}   | GET    | Lihat status & hasil satu transaksi          |
-| /riwayat           | GET    | Lihat riwayat transaksi terakhir (100 data)  |
+| /register          | POST   |  FALSE    | Registrasi user API, Lanjut proses /verif-otp    |
+| /verif-otp         | POST   |  FALSE    | Verifikasi OTP untuk registrasi user API    |
+| /generate-key      | POST   |  TRUE     | Generate ulang (rotasi) API Key dan Private Key, harus pakai API-Key lama |
+| /produk            | GET    |  TRUE     | List semua produk PPOB                       |
+| /cek-produk/{kode_produk}   | GET    |  TRUE    | Detail produk PPOB dengan id tertenu         |
+| /beli              | POST   |  TRUE     | Mulai transaksi pembelian PPOB               |
+| /status/{trx_id}   | GET    |  TRUE     | Lihat status & hasil satu transaksi          |
+| /riwayat           | GET    |  TRUE     | Lihat riwayat transaksi terakhir (100 data)  |
 
 ### 1. Register User (`/register`)
 
@@ -119,12 +122,30 @@ Swagger documentasi otomatis: http://localhost:8000/docs
 {
   "code": 201,
   "status": "success",
-  "message": "Registrasi sukses",
+  "message": "Registrasi sukses. OTP telah dikirim ke email Anda."
+}
+```
+
+### 2. Verifikasi OTP (`/verif-otp`)
+
+**POST /verif-otp**
+
+```json
+{
+  "email": "rama@email.com",
+  "otp": "087766"
+}
+```
+**Response:**
+```json
+{
+  "code": 200,
+  "status": "success",
+  "message": "Verifikasi berhasil. Simpan baik-baik API Key dan Private Key berikut.",
   "data": {
-    "api_key": "...",
-    "private_key": "...",
-    "info": "API Key dan Private Key hanya tampil saat register! Simpan baik-baik."
-  }
+    "api_key": "1234567890",
+    "privat-key": "1234567890"
+    }
 }
 ```
 
