@@ -638,6 +638,7 @@ print(response.json())
 2. edit (digunakan untuk mengedit kuota bersama) free
 3. info (digunakan untuk mendapatkan informasi anggota dan detail kuota) free
 4. kick (digunakan untuk mengeluarkan anggota dari paket akrab) free
+5. slot (digunakan untuk mendapatkan slot yang tersedia / kosong) free
 ```
 
     Berikut contoh curl stiap action :
@@ -836,5 +837,60 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 }
 ```
 
+  - action (slot)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "slot",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)"
+}'
+```
+
+  - respon sukses action (slot)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "nomor-pengelola": "6287856",
+    "jumlah_slot": 3,
+    "data_slot": [
+      {
+        "slot-ke": 1,
+        "alias": "indri",
+        "nomor": "628317",
+        "sisa-add": 0,
+        "slot-id": 14015,
+        "family-member-id": "RlBNQ19f3rZslGkdQKZ_VLRArKk"
+      },
+      {
+        "slot-ke": 2,
+        "alias": "Real",
+        "nomor": "62878590",
+        "sisa-add": 2,
+        "slot-id": 14015,
+        "family-member-id": "RlBNQ19fY8xjcquF6en1Wu01cI_3k"
+      },
+      {
+        "slot-ke": 3,
+        "alias": "",
+        "nomor": "",
+        "sisa-add": 0,
+        "slot-id": 140156,
+        "family-member-id": "RlBNQ19fHjxf1Q3FkiSMLMRV"
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "7902668644",
+      "role": "super_reseller",
+      "saldo_tersedia": 3323700,
+      "catatan": "Saldo tidak dipotong bukan action add"
+    }
+  },
+  "stderr": ""
+}
+```
 
 </details>
