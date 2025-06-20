@@ -732,6 +732,109 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 }
 ```
 
+  - action (kick)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "kick",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)",
+ "nomor_slot": (ganti dengan nomor slot yang mau di add, contoh: 1)
+}'
+```
+
+  - respon sukses action (kick)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Kick anggota berhasil",
+    "data": {
+      "slot": 3,
+      "nomor-anggota": "628778177",
+      "alias": "Rendii",
+      "slot_expiration": "2025-06-26 17:00:00"
+    },
+    "info_saldo_panel": {
+      "id_telegram": "790266",
+      "role": "super_reseller",
+      "saldo_tersedia": 3323700,
+      "catatan": "Saldo tidak dipotong bukan action add"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - action (info)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "info",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)"
+}'
+```
+
+  - respon sukses action (info)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "nomor-pengelola": "62878560",
+    "jumlah_slot": 3,
+    "data_slot": [
+      {
+        "slot-ke": 1,
+        "alias": "indr",
+        "nomor": "628317866",
+        "slot-id": 14015674,
+        "sisa-add": 0,
+        "kuota-bersama": 0,
+        "pemakaian-kuota-bersama": 0,
+        "benefit": "Lokal + RW + Nasional",
+        "total-kuota-benefit": 25,
+        "sisa-kuota-benefit": 22.6
+      },
+      {
+        "slot-ke": 2,
+        "alias": "Real",
+        "nomor": "6287859",
+        "slot-id": 14015675,
+        "sisa-add": 2,
+        "kuota-bersama": 25,
+        "pemakaian-kuota-bersama": 25,
+        "benefit": "Lokal + RW + Nasional",
+        "total-kuota-benefit": 40,
+        "sisa-kuota-benefit": 5.63
+      },
+      {
+        "slot-ke": 3,
+        "alias": "",
+        "nomor": "",
+        "slot-id": 14015683,
+        "sisa-add": 0,
+        "kuota-bersama": 0,
+        "pemakaian-kuota-bersama": 0,
+        "benefit": "Lokal + RW + Nasional",
+        "total-kuota-benefit": 0,
+        "sisa-kuota-benefit": 0
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "79026",
+      "role": "super_reseller",
+      "saldo_tersedia": 3323700,
+      "catatan": "Saldo tidak dipotong bukan action add"
+    }
+  },
+  "stderr": ""
+}
+```
 
 
 </details>
