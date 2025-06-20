@@ -656,6 +656,82 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 }'
 ```
 
+  - respon sukses action (add)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "succes",
+    "message": "Anggota berhasil ditambahkan",
+    "details": {
+      "nomor-pengelola": "6287856",
+      "nomor-slot": 3,
+      "nomor-anggota": "6287781",
+      "nama-admin": "Rendii",
+      "nama-anggota": "Fauzan"
+    },
+    "waktu-eksekusi": {
+      "time": "20.48 detik",
+      "note": "Jika time kurang dri 20 detik nomor anggota nyangkut di akrab lama"
+    },
+    "data": {
+      "code": "214",
+      "code_detail": "214",
+      "status": "FAILED",
+      "message": "HTTP_CLIENT_RESPONSE_BODY_ERR",
+      "title": "",
+      "description": ""
+    },
+    "info_saldo_panel": {
+      "id_telegram": "79026",
+      "role": "super_reseller",
+      "harga": 1000,
+      "saldo_dipotong": 1000,
+      "saldo_sisa": 3323700
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - action (edit)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "edit",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)",
+ "nomor_slot": (ganti dengan nomor slot yang mau di add, contoh: 1),
+ "input_gb": (ganti dengan input gb, contoh: 10 = 10gb)
+}'
+```
+
+  - respon sukses action (edit)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Kuota Bersama berhasil diperbarui.",
+    "data": {
+      "nomor-pengelola": "6287856",
+      "slot": 3,
+      "original-allocation": "75.00 GB",
+      "new-allocation": "5.00 GB"
+    },
+    "info_saldo_panel": {
+      "id_telegram": "79026",
+      "role": "super_reseller",
+      "saldo_tersedia": 3323700,
+      "catatan": "Saldo tidak dipotong bukan action add"
+    }
+  },
+  "stderr": ""
+}
+```
+
 
 
 </details>
