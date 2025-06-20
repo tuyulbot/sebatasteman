@@ -627,3 +627,35 @@ print(response.json())
 ```
 
 </details>
+
+
+<details> <summary>5. Managemen Akrab (klik untuk lihat)</summary>
+
+  - Sebelom menggunakan API nomor di wajibkan login otp terlebih dahulu, api login sudah di sediakan
+  - Berikut action yang bisa di gunakan di API
+```bash
+1. add (digunakan untuk menambhkn anggota) fee 1k
+2. edit (digunakan untuk mengedit kuota bersama) free
+3. info (digunakan untuk mendapatkan informasi anggota dan detail kuota) free
+4. kick (digunakan untuk mengeluarkan anggota dari paket akrab) free
+```
+
+    Berikut contoh curl stiap action :
+
+  - action (add)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "add",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)",
+ "nomor_slot": (ganti dengan nomor slot yang mau di add, contoh: 1),
+ "nomor_anggota": "(ganti dengan nomor anggota yang mau di add)",
+ "nama_anggota": "(ganti dengan nama anggota yang mau di add)",
+ "nama_admin": "(ganti dengan nama admin bebas)"
+}'
+```
+
+
+
+</details>
