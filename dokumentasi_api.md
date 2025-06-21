@@ -639,6 +639,7 @@ print(response.json())
 3. info (digunakan untuk mendapatkan informasi anggota dan detail kuota) free
 4. kick (digunakan untuk mengeluarkan anggota dari paket akrab) free
 5. slot (digunakan untuk mendapatkan slot yang tersedia / kosong) free
+6. bekasankick (digunakan untuk mencari perslot yang sisa kuota 0kb otomatis terkick dri anggota Akrab) free
 ```
 
     Berikut contoh curl stiap action :
@@ -883,9 +884,84 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
       }
     ],
     "info_saldo_panel": {
-      "id_telegram": "7902668644",
+      "id_telegram": "79026",
       "role": "super_reseller",
       "saldo_tersedia": 3323700,
+      "catatan": "Saldo tidak dipotong bukan action add"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - action (bekasankick)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "bekasankick",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)"
+}'
+```
+
+  - respon sukses action (bekasankick)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "nomor-pengelola": "6287856093773",
+    "jumlah_slot": 3,
+    "data_slot": [
+      {
+        "slot-ke": 1,
+        "alias": "ind",
+        "nomor": "6283178",
+        "slot-id": 1401,
+        "family-member-id": "RlBNQ19fCXrWze9Sju23SLR",
+        "sisa-add": 0,
+        "kuota-bersama": 0,
+        "pemakaian-kuota-bersama": 0,
+        "benefit": "Lokal + RW + Nasional",
+        "total-kuota-benefit": 25,
+        "sisa-kuota-benefit": 21.35
+      },
+      {
+        "slot-ke": 2,
+        "alias": "Real",
+        "nomor": "6287859",
+        "slot-id": 14015,
+        "family-member-id": "RlBNQ19fSbC78tZDaKnVD",
+        "sisa-add": 2,
+        "kuota-bersama": 25,
+        "pemakaian-kuota-bersama": 0,
+        "benefit": "Lokal + RW + Nasional",
+        "total-kuota-benefit": 40,
+        "sisa-kuota-benefit": 0,
+        "kick-otomatis": true,
+        "hapus_status": "berhasil kick dari paket Akrab karena sisa kuota benefit 0kb"
+      },
+      {
+        "slot-ke": 3,
+        "alias": "",
+        "nomor": "",
+        "slot-id": 14015,
+        "family-member-id": "RlBNQ19fD1Sc8v5",
+        "sisa-add": 0,
+        "kuota-bersama": 0,
+        "pemakaian-kuota-bersama": 0,
+        "benefit": "Lokal + RW + Nasional",
+        "total-kuota-benefit": 0,
+        "sisa-kuota-benefit": 0,
+        "kick-otomatis": true,
+        "hapus_status": "berhasil kick dari paket Akrab karena sisa kuota benefit 0kb"
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "7902",
+      "role": "super_reseller",
+      "saldo_tersedia": 3314700,
       "catatan": "Saldo tidak dipotong bukan action add"
     }
   },
