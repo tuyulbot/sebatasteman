@@ -705,7 +705,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
  "password": "(ganti dengn password, minta ke admin)",
  "nomor_hp": "(ganti nomor pengelola, wajib login terlebih dahulu)",
  "nomor_slot": (ganti dengan nomor slot yang mau di add, contoh: 1),
- "input_gb": (ganti dengan input gb, contoh: 10 = 10gb)
+ "input_gb": (ganti dengan input gb, contoh: 10 = 10gb, jika ingin edit kuber 0kb di kasih tanda kurung " contoh : "0") 
 }'
 ```
 
