@@ -294,7 +294,7 @@ Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian s
 4. kick (digunakan untuk mengeluarkan anggota dari paket akrab) free
 5. slot (digunakan untuk mendapatkan slot yang tersedia / kosong) free
 6. bekasankick (digunakan untuk mencari perslot yang sisa kuota 0kb otomatis terkick dri anggota Akrab) fee 500p
-7. extraslot (digunakan untuk membeli slot tambahan akrab, sediakan pulsa di nomor 20k)
+7. extraslot (digunakan untuk membeli slot tambahan akrab, sediakan pulsa di nomor 20k) fee 500p
 ```
 
     Berikut contoh curl stiap action :
