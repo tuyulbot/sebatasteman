@@ -157,7 +157,7 @@ curl -X POST 'https://api.tuyull.my.id/api/v1/dor' -H 'Content-Type:application/
 }'
 ```
 
-    - respon sukses (method payment ewallet)
+- respon sukses (method payment ewallet)
 ```json
 {
   "status": "success",
@@ -225,7 +225,7 @@ curl -X POST 'https://api.tuyull.my.id/api/v1/dor' -H 'Content-Type:application/
  - Deskripsi
 parsing json respon pada api pembelian ambil bagian deplink untuk proses pembayaran contoh dana, payment lain sama ambil deplinknya 
 
-    - respon sukses (method payment pulsa)
+- respon sukses (method payment pulsa)
 ```json
 {
   "status": "success",
