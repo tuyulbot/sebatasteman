@@ -297,7 +297,7 @@ Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian s
 7. extraslot (digunakan untuk membeli slot tambahan akrab, sediakan pulsa di nomor 20k) fee 500p
 ```
 
-    Berikut contoh curl stiap action :
+  - Berikut contoh curl stiap action :
 
   - action (add)
 ```bash
@@ -638,5 +638,58 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 ```json
 blom ada data
 ```
+</details>
 
+<details> <summary>4. Tools (klik untuk lihat)</summary>
+
+  - List action Api tools :
+```bash
+- cek_saldo (mengecek saldo panel)
+- cek_kuota (mengecek kuota dan pulsa, nomor wajib sudah login otp)
+- cek_dompul (mengecek kuota via api dompul)
+```
+
+  - action (cek_saldo)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "cek_saldo",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)"
+}'
+```
+
+  - respon action (cek_saldo)
+```json
+
+```
+
+  - action (cek_kuota)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "cek_kuota",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(masukan nomor hp, wajib login terlebih dahulu)"
+}'
+```
+
+  - respon action (cek_kuota)
+```json
+
+```
+
+  - action (cek_dompul)
+```bash
+curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "cek_dompul",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(masukan nomor hp)"
+}'
+```
+
+  - respon action (cek_dompul)
+```json
+
+```
 </details>
