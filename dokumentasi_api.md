@@ -288,14 +288,14 @@ Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian s
   - Sebelom menggunakan API nomor di wajibkan login otp terlebih dahulu, api login sudah di sediakan
   - Berikut action yang bisa di gunakan di API
 ```bash
-1. add (digunakan untuk menambhkn anggota) fee 1k
-2. edit (digunakan untuk mengedit kuota bersama) fee 500p
+1. add (digunakan untuk menambhkn anggota) fee 600p
+2. edit (digunakan untuk mengedit kuota bersama) fee 400p
 3. info (digunakan untuk mendapatkan informasi anggota dan detail kuota) free
 4. kick (digunakan untuk mengeluarkan anggota dari paket akrab) free
 5. slot (digunakan untuk mendapatkan slot yang tersedia / kosong) free
-6. bekasankick (digunakan untuk mengecek perslot yang sisa kuota 0kb otomatis terkick dri anggota Akrab) fee 500p
-7. bekasan (digunakan untuk mengecek perslot yang sisa kuota 0kb tanpa adany proses kick) fee 500p
-8. extraslot (digunakan untuk membeli slot tambahan akrab, sediakan pulsa di nomor 20k) fee 500p
+6. bekasankick (digunakan untuk mengecek perslot yang sisa kuota 0kb otomatis terkick dri anggota Akrab) fee 250p
+7. bekasan (digunakan untuk mengecek perslot yang sisa kuota 0kb tanpa adany proses kick) fee 150p
+8. extraslot (digunakan untuk membeli slot tambahan akrab, sediakan pulsa di nomor 20k) free
 ```
 
   - Berikut contoh curl stiap action :
