@@ -85,7 +85,7 @@ curl -X GET 'https://api.tuyull.my.id/api/v1/cek-login?nomor=(masukan nomor hp)'
 
   - Rubah password
 ```bash
-curl -X GET 'http://api.tuyull.my.id:5500/api/v1/ubah-password?id_telegram=(masukan id telegram)&password_lama=(masukan passwd lama)&password_baru=(masukan passwd baru)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X GET 'http://api.tuyull.my.id/api/v1/ubah-password?id_telegram=(masukan id telegram)&password_lama=(masukan passwd lama)&password_baru=(masukan passwd baru)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
 ```
 
   - Respon
