@@ -12,7 +12,7 @@
 
   - Minta Otp
  ```bash
-curl -X GET 'https://api.tuyull.my.id/api/v1/minta-otp?nomor_hp=(ganti dengan nomor hp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X GET 'https://api.hidepulsa.com/api/v1/minta-otp?nomor_hp=(ganti dengan nomor hp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
  ```
 
   - Respon Sukses
@@ -43,7 +43,7 @@ curl -X GET 'https://api.tuyull.my.id/api/v1/minta-otp?nomor_hp=(ganti dengan no
 
 - Verifikasi otp
 ```bash
-curl -X GET 'https://api.tuyull.my.id/api/v1/verif-otp?nomor_hp=(ganti dengan nomor hp)&kode_otp=(masukan otp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X GET 'https://api.hidepulsa.com/api/v1/verif-otp?nomor_hp=(ganti dengan nomor hp)&kode_otp=(masukan otp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
 ```
 
 - Respon sukses
@@ -72,7 +72,7 @@ curl -X GET 'https://api.tuyull.my.id/api/v1/verif-otp?nomor_hp=(ganti dengan no
 
   - Cek Login:
 ```bash
-curl -X GET 'https://api.tuyull.my.id/api/v1/cek-login?nomor=(masukan nomor hp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X GET 'https://api.hidepulsa.com/api/v1/cek-login?nomor=(masukan nomor hp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
 ```
 
   - Respon Succes
@@ -85,7 +85,7 @@ curl -X GET 'https://api.tuyull.my.id/api/v1/cek-login?nomor=(masukan nomor hp)'
 
   - Rubah password
 ```bash
-curl -X GET 'http://api.tuyull.my.id/api/v1/ubah-password?id_telegram=(masukan id telegram)&password_lama=(masukan passwd lama)&password_baru=(masukan passwd baru)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X GET 'http://api.hidepulsa.com/api/v1/ubah-password?id_telegram=(masukan id telegram)&password_lama=(masukan passwd lama)&password_baru=(masukan passwd baru)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
 ```
 
   - Respon
@@ -114,11 +114,12 @@ Slalu melihat kode_buy di api get produk, di stiap paket stiap paket ada kode_bu
 - pancinganv1
 - addon_dana
 - addon_satuan
+- addon_slow ( di khusukan untuk pembelian addon xuts dan xutp)
 ```
 
   - Get Produk:
 ```bash
-curl -X GET 'https://api.tuyull.my.id/api/v1/produk' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X GET 'https://api.hidepulsa.com/api/v1/produk' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
 ```
 
   - Respon
@@ -147,7 +148,7 @@ curl -X GET 'https://api.tuyull.my.id/api/v1/produk' -H 'Authorization:(ganti de
 
   - Pembelian:
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/v1/dor' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api-key , minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/v1/dor' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api-key , minta ke admin)' -H ':' -d '{
  "kode": "(ganti dengan kode_buy sesuai nama_paket yang mau di beli, cek api get produk untuk melihat",
  "nama_paket": "(ganti dengan nama paket yang ada di api get produk)",
  "nomor_hp": "(masukan nomor hp)",
@@ -281,6 +282,60 @@ parsing json respon pada api pembelian ambil bagian deplink untuk proses pembaya
 
  - Deskripsi
 Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian sukses
+
+  - Pembelian (addon_slow)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/v1/dor' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api-key , minta ke admin)' -H ':' -d '{
+ "kode": "addon_slow",
+ "nama_paket": "(ganti dengan nama paket yang ada di api get produk)",
+ "nomor_hp": "(masukan nomor hp)",
+ "payment": "(masukan method pembayaran yang suport sesuai nama_paket yang mau di beli, cek api get produk untuk melihat)",
+ "id_telegram": "(masukan id telegram)",
+ "password": "(masukan password)"
+}'
+```
+
+  - Respon (addon_slow)
+```json
+{
+  "status": "processing",
+  "message": "Proses pembelian sedang berjalan, gunakan processId untuk cek status.",
+  "processId": "b328393e-2549-4a37-8b03-4dce43aac4a5"
+}
+```
+  - Deskripsi:
+Ambil processId dari respon di atas dan gunakan untuk cek status pembelian menggunakan endpoint di bawah ini
+
+  - Cek Status Pembelian (addon_slow)
+```bash
+curl -X GET 'https://api.tuyull.my.id/api/v1/dor/status/(ganti dengan proccessId yang di salin dri pembelian respon (addon_slow)' -H 'Authorization:(ganti dengan api-key)'
+```
+
+  - Respon cek status pembelian (addon_slow)
+```json
+{
+  "status": "success",
+  "processId": "1ff3bc4d-d488-4ddc-ab10-9b24e5a131ca",
+  "result": {
+    "status": "success",
+    "data": {
+      "code": "213",
+      "code_detail": "213",
+      "status": "FAILED",
+      "message": "422 -> Failed call ipaas purchase, with status code:422 : null, ",
+      "title": "",
+      "description": ""
+    }
+  },
+  "created_at": "2025-07-13T08:09:42.000Z",
+  "updated_at": "2025-07-13T08:20:28.000Z",
+  "saldo_dipotong": 500,
+  "keterangan": "Saldo telah dipotong sebesar 500"
+}
+```
+
+  - Deskripsi:
+Jika respon sudah seperti di atas , maka pembelian sudah berhasil dan saldo sudah dipotong
 </details>
 
 <details> <summary>3. Managemen Akrab (klik untuk lihat)</summary>
@@ -302,7 +357,7 @@ Jika respon json pembelian payment pulsa seperti di atas maka proses pembelian s
 
   - action (add)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "add",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -355,7 +410,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (edit)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "edit",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -392,7 +447,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (kick)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "kick",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -428,7 +483,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (info)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "info",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -496,7 +551,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (slot)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "slot",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -552,7 +607,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (bekasankick)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "bekasankick",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -627,7 +682,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (bekasan)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "bekasan",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -698,7 +753,7 @@ curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/j
 
   - action (extraslot)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "extraslot",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -719,11 +774,12 @@ blom ada data
 - cek_saldo (mengecek saldo panel)
 - cek_kuota (mengecek kuota dan pulsa, nomor wajib sudah login otp)
 - cek_dompul (mengecek kuota via api dompul)
+- cek_sms (mengecek sms gagal dri myxl untuk pembelian addon xuts && xutp )
 ```
 
   - action (cek_saldo)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "cek_saldo",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)"
@@ -737,7 +793,7 @@ curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/j
 
   - action (cek_kuota)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "cek_kuota",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
@@ -752,8 +808,23 @@ curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/j
 
   - action (cek_dompul)
 ```bash
-curl -X POST 'https://api.tuyull.my.id/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
  "action": "cek_dompul",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(masukan nomor hp)"
+}'
+```
+
+  - respon action (cek_dompul)
+```json
+
+```
+
+  - action (cek_sms)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "cek_sms",
  "id_telegram": "(ganti dengan id telegram)",
  "password": "(ganti dengn password, minta ke admin)",
  "nomor_hp": "(masukan nomor hp)"
