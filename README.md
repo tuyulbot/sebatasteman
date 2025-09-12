@@ -72,7 +72,11 @@ curl -X GET 'https://api.hidepulsa.com/api/v1/verif-otp?nomor_hp=(ganti dengan n
 
   - Cek Login:
 ```bash
-curl -X GET 'https://api.hidepulsa.com/api/v1/cek-login?nomor=(masukan nomor hp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X POST 'https://api.hidepulsa.com/api/v1/cek-login' -H 'Content-Type:application/json' -H 'Authorization:(api key)' -H ':' -d '{
+ "id_telegram": "id tele",
+ "password": "password",
+ "nomor_hp": "nomor hp"
+}'
 ```
 
   - Respon Succes
@@ -343,6 +347,7 @@ Jika respon sudah seperti di atas , maka pembelian sudah berhasil dan saldo suda
   - Sebelom menggunakan API nomor di wajibkan login otp terlebih dahulu, api login sudah di sediakan
   - Berikut action yang bisa di gunakan di API
 ```bash
+Tambahan : action : help (untuk melihat stiap description action di endpoint /api/akrab)
 1. add (digunakan untuk menambhkn anggota) fee 600p
 2. edit (digunakan untuk mengedit kuota bersama) fee 400p
 3. info (digunakan untuk mendapatkan informasi anggota dan detail kuota) free
@@ -354,6 +359,60 @@ Jika respon sudah seperti di atas , maka pembelian sudah berhasil dan saldo suda
 ```
 
   - Berikut contoh curl stiap action :
+
+  - Tambahan action help
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/akrab' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "help",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)"
+}'
+```
+  - Respon sukses action (help)
+```json
+{
+  "status": "success",
+  "message": "Daftar fee dan deskripsi untuk setiap action",
+  "data": [
+    {
+      "action": "add",
+      "fee": 850,
+      "deskripsi": "Menambahkan anggota baru pada slot yang dipilih",
+      "catatan": "Saldo akan terpotong jika bukan admin/premium"
+    },
+    {
+      "action": "edit",
+      "fee": 350,
+      "deskripsi": "Mengubah kuota bersama pada slot yang dipilih",
+      "catatan": "Saldo akan terpotong jika bukan admin/premium"
+    },
+    {
+      "action": "bekasankick",
+      "fee": 250,
+      "deskripsi": "pengecekan kuota & pengekickan anggota yang kuotanya habis(otomatis)",
+      "catatan": "Saldo akan terpotong jika bukan admin/premium"
+    },
+    {
+      "action": "bekasan",
+      "fee": 150,
+      "deskripsi": "pengecekan kuota & tanpa pengekickan anggota yang kuotanya habis",
+      "catatan": "Saldo akan terpotong jika bukan admin/premium"
+    },
+    {
+      "action": "list",
+      "fee": 0,
+      "deskripsi": "Melihat daftar slot yang tersedia pada nomor pengelola",
+      "catatan": "Gratis / tidak ada pemotongan saldo"
+    },
+    {
+      "action": "help",
+      "fee": 0,
+      "deskripsi": "Melihat daftar fee & deskripsi action",
+      "catatan": "Gratis / tidak ada pemotongan saldo"
+    }
+  ]
+}
+```
 
   - action (add)
 ```bash
