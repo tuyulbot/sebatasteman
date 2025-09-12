@@ -12,7 +12,11 @@
 
   - Minta Otp
  ```bash
-curl -X GET 'https://api.hidepulsa.com/api/v1/minta-otp?nomor_hp=(ganti dengan nomor hp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X POST 'https://api.hidepulsa.com/api/v1/minta-otp' -H 'Content-Type:application/json' -H 'Authorization:(ganti api key)' -H ':' -d '{
+ "id_telegram": "idtele",
+ "password": "password",
+ "nomor_hp": "nomor hp"
+}'
  ```
 
   - Respon Sukses
@@ -43,7 +47,12 @@ curl -X GET 'https://api.hidepulsa.com/api/v1/minta-otp?nomor_hp=(ganti dengan n
 
 - Verifikasi otp
 ```bash
-curl -X GET 'https://api.hidepulsa.com/api/v1/verif-otp?nomor_hp=(ganti dengan nomor hp)&kode_otp=(masukan otp)' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+curl -X POST 'https://api.hidepulsa.com/api/v1/verif-otp' -H 'Content-Type:application/json' -H 'Authorization:(api key)' -H ':' -d '{
+ "id_telegram": "idtele",
+ "password": "password",
+ "nomor_hp": "nomor hp",
+    "kode_otp": "otp"
+}'
 ```
 
 - Respon sukses
