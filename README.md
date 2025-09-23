@@ -1,4 +1,5 @@
-###        Dokumentasi api wong gabut
+###        Tutorial pembuatan donat bolong kentang
+###           Semoga membantu:v
 
 <details> <summary>1. Login Nomor (klik untuk lihat)</summary>
 
@@ -843,6 +844,7 @@ blom ada data
 - cek_kuota (mengecek kuota dan pulsa, nomor wajib sudah login otp)
 - cek_dompul (mengecek kuota via api dompul)
 - cek_sms (mengecek sms gagal dri myxl untuk pembelian addon xuts && xutp )
+- cek_tt  (mengecek diskon nomor untuk paket unli turbo TikTok dll)
 ```
 
   - action (cek_saldo)
@@ -903,6 +905,78 @@ curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/
 ```json
 
 ```
+
+  - action (cek_tt)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "cek_tt",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(masukan nomor hp)",
+ "is_enterprise": "False"
+}'
+```
+
+  - respon action (cek_tt)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": [
+    {
+      "number": 1,
+      "name": "Premium",
+      "price": 50000,
+      "original_price": 165000,
+      "discount": 70,
+      "validity": ""
+    },
+    {
+      "number": 2,
+      "name": "Super",
+      "price": 30000,
+      "original_price": 125000,
+      "discount": 76,
+      "validity": ""
+    },
+    {
+      "number": 3,
+      "name": "Standard",
+      "price": 20000,
+      "original_price": 85000,
+      "discount": 77,
+      "validity": ""
+    },
+    {
+      "number": 4,
+      "name": "Basic",
+      "price": 10000,
+      "original_price": 55000,
+      "discount": 82,
+      "validity": ""
+    },
+    {
+      "number": 5,
+      "name": "Netflix",
+      "price": 25000,
+      "original_price": 50000,
+      "discount": 50,
+      "validity": ""
+    },
+    {
+      "number": 6,
+      "name": "TikTok",
+      "price": 25000,
+      "original_price": 50000,
+      "discount": 50,
+      "validity": ""
+    }
+  ],
+  "stderr": ""
+}
+```
+
+  - Noted : untuk pembelian tiktok stiap nomor harga paket tiktok berbeda2, harga paket tiktok yang bisa di beli harga 30.000 pasti bisa di beli
 </details>
 
 
