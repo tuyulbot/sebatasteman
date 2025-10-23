@@ -1138,15 +1138,16 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
 ```
 
   <details> <summary>=> Action (help) (klik utuk lihat)</summary>
-  - Action (help)
-```bash
+
+    - Action (help)
+  ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
 {
  "action": "help",
  "id_telegram": "68639",
  "password": "5aeb1fb7b"
 }'
-```
+  ```
 
   - Respon sukses action (info)
 ```json
