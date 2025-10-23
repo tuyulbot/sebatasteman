@@ -1336,7 +1336,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
     "status": "SUCCESS",
     "data": {
       "summary": {
-        "group_id": "U0NfXzEEqgEsi2-nCHP7NIGBl0Oi2uH0-IzdyUGEWU6U1InXD_nGtLBefAMDRO6yr7OoZyfcKM3syub_TA3-0Tg",
+        "group_id": "U0NfXy8d1KKDoQuNLJD_oK7684nQ3HoX0BcjaXGe1zoA9V0UtyNadXAeyEwASySSzeAeWr_EeUTWxfactcHZH3Y",
         "group_name": "C12",
         "created_at": {
           "tanggal": "2025-06-09 18:51:20"
@@ -1349,7 +1349,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
           "icon_url": "https://rinjani.myxl.xlaxiata.co.id/2023-01/internet2x.png?VersionId=null"
         },
         "detail_kuota": {
-          "members_count": 2,
+          "total-member": 1,
           "benefit": {
             "name": "Kuota Utama & Bonus",
             "total": "25.00 GB",
@@ -1360,29 +1360,28 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
       },
       "members": [
         {
-          "nomor": 1,
           "status": "ACTIVE",
-          "member_id": "U0NfX8cYRolb6EW8-hhBBgeoZOmyLGVPxX130jXbGaFcPJOXqYrhMr2hnWLBQ5wDF0RzGMNT18PKFYT9y7X6b34",
+          "member_id": "U0NfX42qN6lZ3ijQi56CPGJm0eLICk1Gw4mmgmTZAFdwgbiWOptalSO99Pt8BGAFISBeV2efeizZU869o1ZLDCE",
           "member_name": "C12",
           "msisdn": "62877656",
           "join_date": "2025-06-09 18:51:20",
           "member_role": "PARENT",
           "slot_type": "FREE",
-          "subscriber_number": "U0NfX2I1WP2ZXUeeYrQeQbTmT_8kOKVHjiTk_ynPyJbCpb1LsRuFOVH2UVpBdvuDZ34EO0hGGAzt_hM1u2pUCrQ_",
+          "subscriber_number": "U0NfX-su-4x6a16pd8RH8rlup8LYhwGT8bD1ui5YCfrbhCXnPkDVprnaXc3-sJnlmnrYesUttz_UHt923_IBhpT3",
           "total": "25.00 GB",
           "pemakaian": "2.00 KB",
           "tersisa": "25.00 GB"
         },
         {
-          "nomor": 2,
+          "nomor": 1,
           "status": "ACTIVE",
-          "member_id": "U0NfXyF5Ilp1_n86khaF2imuRnkDkBRiN4yLMvkczAniN_U2lW-tKDWMWlB3_CiTQAJo7uYFIeem7Eq5h2fDJlU",
+          "member_id": "U0NfX7jwhjvKjyUj9oFfWDQ2wp-2QjubD5OeLuXVvvnf1RBN3ryyD-OmlBs6x_Kj1rWXXwOl02fwIzCGmkVQC1A",
           "member_name": "g",
-          "msisdn": "62877413",
+          "msisdn": "6287741",
           "join_date": "2025-06-09 18:51:59",
           "member_role": "MEMBER",
           "slot_type": "FREE",
-          "subscriber_number": "U0NfX6DacoU1rrcunMFRtZXJx6r9HcfUQUQBdjYSDfjQ3jRzfLxKybAsv4y2900mbQdBGdEfDqikVGevNpk7Y8a7",
+          "subscriber_number": "U0NfXzlSAGDNmT3vX5WQxHs4WitGetNlstGjBiFnAmOED0kh1z6HFtosQNUtl5Ur28UmFBsB55FySrJBlX6qkCr9",
           "total": "25.00 GB",
           "pemakaian": "2.00 KB",
           "tersisa": "25.00 GB"
@@ -1390,7 +1389,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
       ]
     },
     "info_saldo_panel": {
-      "id_telegram": "686399",
+      "id_telegram": "68639",
       "role": "admin",
       "saldo_tersedia": 50000,
       "catatan": "Saldo tidak dipotong"
