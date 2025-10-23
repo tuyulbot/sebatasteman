@@ -1124,3 +1124,257 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
 ```
 
 </details>
+
+<details> <summary>6. Managemen Circel (klik utuk lihat)</summary>
+
+  - List Action 
+```ini
+  => create = (pembuatan group circel dan invit 1 anggota, sudah auto acc anggota)
+  => invite = (Invite anggota circel baru, sudah auto acc anggota )
+  => info = ( info detail anggota + sisa kuota)
+  => bonus = ( Klaim bonus yang tersedia)
+```
+
+  - Action (create)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+{
+ "action": "create",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b",
+ "nomor_admin": "nomor pengelola yang mau di pake",
+ "nomor_anggota": "nomor anggota",
+ "nama_group": "nama group",
+ "nama_admin": "nama pengelola circel",
+ "nama_anggota": "nama anggota circel"
+}'
+```
+
+  - Respon sukses action (create)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Berhasil membuat grup dan menerima undangan.",
+    "details": {
+      "group_name": "hideen",
+      "nomor_pengelola": "62877",
+      "nomor_member": "6287",
+      "owner_name": "kontollo",
+      "member_name": "kuio",
+      "group_id": "U0NfX2Yk6KBveJ0d8GedSlWWeoPB",
+      "member_id": "U0NfX3mYZurpSVvlNt4nxwKSvg0r"
+    },
+    "data": {
+      "code": "000",
+      "status": "SUCCESS",
+      "data": {
+        "response_code": "200-00",
+        "message": "Successfully processed the request"
+      }
+    },
+    "info_saldo_panel": {
+      "id_telegram": "686",
+      "role": "admin",
+      "saldo_tersedia": 50000,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Action (invite)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "invite",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b",
+ "nomor_admin": "nomor pengelola yang mau di pake",
+ "nomor_anggota": "nomor anggota",
+ "nama_anggota": "nama anggota circel"
+}'
+```
+
+  - Respon Sukses action (invite)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Berhasil invit dan menerima undangan.",
+    "details": {
+      "nomor_pengelola": "62877",
+      "nomor_member": "62819",
+      "member_name": "kuujjo",
+      "group_id": "U0NfX5f82L5h0ikjGg_pU0jW0",
+      "member_id": "U0NfX9PzelAbtQbg9oWr_2_"
+    },
+    "data": {
+      "code": "000",
+      "status": "SUCCESS",
+      "data": {
+        "response_code": "200-00",
+        "message": "Successfully processed the request"
+      }
+    },
+    "info_saldo_panel": {
+      "id_telegram": "686",
+      "role": "admin",
+      "saldo_tersedia": 50000,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Action (info)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "info",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b",
+ "nomor_admin": "nomor pengelola yang mau di pake"
+}'
+```
+
+  - Respon sukses action (info)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "code": "000",
+    "status": "SUCCESS",
+    "data": {
+      "summary": {
+        "group_id": "U0NfX5ZkR0VVpbqGz_Cpu1z4TnLaDeiOVV7OhdD6sawXEWTA4n2Y7kLpoCt6qa9ZUgmbcjmgiZxFxY_kPJ4fCDA",
+        "group_name": "hideen",
+        "created_at": {
+          "tanggal": "2025-10-21 19:57:19"
+        },
+        "total_free_slot": 5,
+        "total_paid_slot": 0,
+        "bonus_remaining": 0,
+        "package": {
+          "name": "Kuota Circle",
+          "icon_url": "https://rinjani.myxl.xlaxiata.co.id/2023-01/internet2x.png?VersionId=null",
+          "benefit": {
+            "name": "DATA*24jam di semua jaringan",
+            "allocation": {
+              "total": "250.00 MB"
+            },
+            "consumption": {
+              "total": "2.00 KB"
+            },
+            "remaining": {
+              "total": "250.00 MB"
+            }
+          }
+        },
+        "detail_kuota": {
+          "members_count": 5,
+          "total_kuota_permember": {
+            "total": "250.00 MB"
+          },
+          "total_kuota_allmember": {
+            "total": "1.22 GB"
+          },
+          "total_kuota": {
+            "total": "1.22 GB"
+          },
+          "total_pemakain": {
+            "total": "9.00 KB"
+          },
+          "sisa_pemakain": {
+            "total": "1.22 GB"
+          }
+        }
+      },
+      "members": [
+        {
+          "status": "ACTIVE",
+          "member_id": "U0NfX-cVE7LErcdy-i7L6q0sdKlIQnih3Pyx1mD9ffDDv33rlnp5-rdGQySGDywlpsTU4nrp1f0k0sfVgAN5MRI",
+          "member_name": "",
+          "msisdn": "6287741317214",
+          "join_date": "2025-10-21 19:57:19",
+          "member_role": "PARENT",
+          "slot_type": "FREE",
+          "allocation": "250.00 MB",
+          "consumption": "2.00 KB",
+          "remaining": "250.00 MB",
+          "subscriber_number": "U0NfX5diB_TfaIUjr9ddAi0XfdyDAyBiwB1EEox2xNcn_B3vUlPp3waval6ZzyDj-TxLTNJQJW1FG23SsKC_0FrU"
+        },
+        {
+          "status": "ACTIVE",
+          "member_id": "U0NfX-bFAEUwohASx1J4ZmlnCK8HW_yY3_gTwZj5nuAuLui_OaeAdJcpJEGBWDkEeepEleRhyQKPzK_oewk-a_Y",
+          "member_name": "kuio",
+          "msisdn": "6287741",
+          "join_date": "2025-10-21 19:57:44",
+          "member_role": "MEMBER",
+          "slot_type": "FREE",
+          "allocation": "250.00 MB",
+          "consumption": "2.00 KB",
+          "remaining": "250.00 MB",
+          "subscriber_number": "U0NfXwDurY2h--5U-99iwegZq5LxwhkLpTbDwupR5DHn6tveFcNNgUzmlYZuY8EAJy0Hu1_7s60au6sm5CQJKMAq"
+        },
+        {
+          "status": "ACTIVE",
+          "member_id": "U0NfX-ftlDGNvTko3u9pqE4zqF464vHRwTaZHh4gcYfmbhlBtM36NZ4TQKfZG2NJoz2OfPS2I0LMc6fYJXGueoU",
+          "member_name": "kujo",
+          "msisdn": "62878764",
+          "join_date": "2025-10-21 19:59:26",
+          "member_role": "MEMBER",
+          "slot_type": "FREE",
+          "allocation": "250.00 MB",
+          "consumption": "2.00 KB",
+          "remaining": "250.00 MB",
+          "subscriber_number": "U0NfX5wPHbUldBbyKyOuw4nCf7HyYlu8rLxeIbSqS0GbvrCyFDi9Ox4bnkznPbzr5lPlbm0Dnl5jqZAI9BuFQEWe"
+        },
+        {
+          "status": "ACTIVE",
+          "member_id": "U0NfX0Vg_v9NQFxPlwiRHB4sE7CWkJvXasaeagKwPpkqiMK1dW9mg09tHkk9fskC9c4vQaq88cWn4mKyH_OjgXE",
+          "member_name": "kujo",
+          "msisdn": "6287789",
+          "join_date": "2025-10-21 20:00:22",
+          "member_role": "MEMBER",
+          "slot_type": "FREE",
+          "allocation": "250.00 MB",
+          "consumption": "2.00 KB",
+          "remaining": "250.00 MB",
+          "subscriber_number": "U0NfX80WyJMrYPPjBkv9-zIFyxB3XxhSTukNwBipS5w5MZt4iusUjnYYqoFIVV05r3kHcaZqc9kZByd2VaV6tc8u"
+        },
+        {
+          "status": "ACTIVE",
+          "member_id": "U0NfXwAjmg4HFLdJoDJhBQwgLJJqeaycmlBkWeR1slMaBwKmt7y7fRAUZtwL-haQFpO8K3ICmJSv1CNUmyDis2c",
+          "member_name": "kuujjo",
+          "msisdn": "62819997",
+          "join_date": "2025-10-22 11:02:33",
+          "member_role": "MEMBER",
+          "slot_type": "FREE",
+          "allocation": "250.00 MB",
+          "consumption": "1.00 KB",
+          "remaining": "250.00 MB",
+          "subscriber_number": "U0NfX-NsEWSN-BZzqlbu7w8yXGT-rURTAufFkFqh6OKdvgeQm1l3WowyrxRwZNfL98CyADy_Usc8THmpZkczvm_o6A"
+        }
+      ]
+    },
+    "info_saldo_panel": {
+      "id_telegram": "68639",
+      "role": "admin",
+      "saldo_tersedia": 50000,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Action (bonus)
+```bash
+```
+</details>
