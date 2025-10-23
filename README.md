@@ -1129,10 +1129,55 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
 
   - List Action 
 ```ini
+  => help = ( cek fee per action)
   => create = (pembuatan group circel dan invit 1 anggota, sudah auto acc anggota)
   => invite = (Invite anggota circel baru, sudah auto acc anggota )
   => info = ( info detail anggota + sisa kuota)
   => bonus = ( Klaim bonus yang tersedia)
+```
+
+  - Action (help)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+{
+ "action": "help",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b"
+}'
+```
+
+  - Respon sukses action (info)
+```json
+{
+  "status": "success",
+  "message": "Daftar fee dan deskripsi untuk setiap action",
+  "data": [
+    {
+      "action": "create",
+      "fee": 500,
+      "deskripsi": "Membuat grup circel baru dan invit 1 anggota ( auto acc undangan circel )",
+      "catatan": "Saldo akan terpotong jika bukan admin"
+    },
+    {
+      "action": "invite",
+      "fee": 300,
+      "deskripsi": "Mengundang anggota baru ke grup circel yang sudah dibuat ( auto acc undangan circel )",
+      "catatan": "Saldo akan terpotong jika bukan admin"
+    },
+    {
+      "action": "info",
+      "fee": 0,
+      "deskripsi": "info detail grup circel dan sisa kuota",
+      "catatan": "Gratis / tidak ada pemotongan saldo"
+    },
+    {
+      "action": "bonus",
+      "fee": 200,
+      "deskripsi": "klaim bonus circel yang tersedia",
+      "catatan": "Saldo akan terpotong jika bukan admin"
+    }
+  ]
+}
 ```
 
   - Action (create)
@@ -1374,7 +1419,27 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 }
 ```
 
+  - keterangan untuk action (bonus)
+```ini
+  Pada bagian "list_bonus" bisa di isi seperti ini sesuai kebutuhan:
+    => "list_bonus": "list" = ( untuk melihat list bonus yang tersedia)
+    => "list_bonus": "all" = (untuk mengeklaim semua bonus yang tersedia)
+    => "list_bonus": "1" = (untuk megklaim bonus satuan, contoh klaim bonus nomor 1 maka yang ke klaim bonus nomor 1)
+```
+
   - Action (bonus)
 ```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "bonus",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b",
+ "nomor_admin": "nomor pengelola yang mau di pake"
+ "list_bonus": "bisa di cek di keterangan untuk action (bonus) jika bingung"
+}'
+```
+
+  - Respon sukses action (bonus)
+```json
+blom ada contoh aihihihi:v
 ```
 </details>
