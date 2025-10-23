@@ -1130,6 +1130,7 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
   - List Action 
 ```ini
   => help = ( cek fee per action)
+  => validasi_nomor = (validasi nomor anggota sebelum invit ke anggota circel)
   => create = (pembuatan group circel dan invit 1 anggota, sudah auto acc anggota)
   => invite = (Invite anggota circel baru, sudah auto acc anggota )
   => info = ( info detail anggota + sisa kuota)
@@ -1179,6 +1180,44 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   ]
 }
 ```
+
+  - Action (validasi_nomor)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+{
+ "action": "validasi_nomor",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b",
+ "nomor_admin": "nomor pengelola yang mau di pake",
+ "nomor_anggota": "nomor anggota"
+}'
+```
+
+  - Respon nomor valid, action (validasi_nomor)
+```json
+
+```
+  - Respon nomor tidak valid, action (validasi_nomor)
+```json
+{
+  "status": "error",
+  "code": 0,
+  "data": {
+    "status": "error",
+    "code": "400-4004",
+    "message": "Response code tidak dikenali. Silakan cek kembali.",
+    "detail": "User is already a participant of another family",
+    "info_saldo_panel": {
+      "id_telegram": "6863",
+      "role": "admin",
+      "saldo_tersedia": 50000,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
 
   - Action (create)
 ```bash
@@ -1297,119 +1336,61 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
     "status": "SUCCESS",
     "data": {
       "summary": {
-        "group_id": "U0NfX5ZkR0VVpbqGz_Cpu1z4TnLaDeiOVV7OhdD6sawXEWTA4n2Y7kLpoCt6qa9ZUgmbcjmgiZxFxY_kPJ4fCDA",
-        "group_name": "hideen",
+        "group_id": "U0NfXzEEqgEsi2-nCHP7NIGBl0Oi2uH0-IzdyUGEWU6U1InXD_nGtLBefAMDRO6yr7OoZyfcKM3syub_TA3-0Tg",
+        "group_name": "C12",
         "created_at": {
-          "tanggal": "2025-10-21 19:57:19"
+          "tanggal": "2025-06-09 18:51:20"
         },
         "total_free_slot": 5,
         "total_paid_slot": 0,
         "bonus_remaining": 0,
         "package": {
           "name": "Kuota Circle",
-          "icon_url": "https://rinjani.myxl.xlaxiata.co.id/2023-01/internet2x.png?VersionId=null",
-          "benefit": {
-            "name": "DATA*24jam di semua jaringan",
-            "allocation": {
-              "total": "250.00 MB"
-            },
-            "consumption": {
-              "total": "2.00 KB"
-            },
-            "remaining": {
-              "total": "250.00 MB"
-            }
-          }
+          "icon_url": "https://rinjani.myxl.xlaxiata.co.id/2023-01/internet2x.png?VersionId=null"
         },
         "detail_kuota": {
-          "members_count": 5,
-          "total_kuota_permember": {
-            "total": "250.00 MB"
-          },
-          "total_kuota_allmember": {
-            "total": "1.22 GB"
-          },
-          "total_kuota": {
-            "total": "1.22 GB"
-          },
-          "total_pemakain": {
-            "total": "9.00 KB"
-          },
-          "sisa_pemakain": {
-            "total": "1.22 GB"
+          "members_count": 2,
+          "benefit": {
+            "name": "Kuota Utama & Bonus",
+            "total": "25.00 GB",
+            "sisa": "24.68 GB",
+            "pemakaian": "328.00 MB"
           }
         }
       },
       "members": [
         {
+          "nomor": 1,
           "status": "ACTIVE",
-          "member_id": "U0NfX-cVE7LErcdy-i7L6q0sdKlIQnih3Pyx1mD9ffDDv33rlnp5-rdGQySGDywlpsTU4nrp1f0k0sfVgAN5MRI",
-          "member_name": "",
-          "msisdn": "6287741317214",
-          "join_date": "2025-10-21 19:57:19",
+          "member_id": "U0NfX8cYRolb6EW8-hhBBgeoZOmyLGVPxX130jXbGaFcPJOXqYrhMr2hnWLBQ5wDF0RzGMNT18PKFYT9y7X6b34",
+          "member_name": "C12",
+          "msisdn": "62877656",
+          "join_date": "2025-06-09 18:51:20",
           "member_role": "PARENT",
           "slot_type": "FREE",
-          "allocation": "250.00 MB",
-          "consumption": "2.00 KB",
-          "remaining": "250.00 MB",
-          "subscriber_number": "U0NfX5diB_TfaIUjr9ddAi0XfdyDAyBiwB1EEox2xNcn_B3vUlPp3waval6ZzyDj-TxLTNJQJW1FG23SsKC_0FrU"
+          "subscriber_number": "U0NfX2I1WP2ZXUeeYrQeQbTmT_8kOKVHjiTk_ynPyJbCpb1LsRuFOVH2UVpBdvuDZ34EO0hGGAzt_hM1u2pUCrQ_",
+          "total": "25.00 GB",
+          "pemakaian": "2.00 KB",
+          "tersisa": "25.00 GB"
         },
         {
+          "nomor": 2,
           "status": "ACTIVE",
-          "member_id": "U0NfX-bFAEUwohASx1J4ZmlnCK8HW_yY3_gTwZj5nuAuLui_OaeAdJcpJEGBWDkEeepEleRhyQKPzK_oewk-a_Y",
-          "member_name": "kuio",
-          "msisdn": "6287741",
-          "join_date": "2025-10-21 19:57:44",
+          "member_id": "U0NfXyF5Ilp1_n86khaF2imuRnkDkBRiN4yLMvkczAniN_U2lW-tKDWMWlB3_CiTQAJo7uYFIeem7Eq5h2fDJlU",
+          "member_name": "g",
+          "msisdn": "62877413",
+          "join_date": "2025-06-09 18:51:59",
           "member_role": "MEMBER",
           "slot_type": "FREE",
-          "allocation": "250.00 MB",
-          "consumption": "2.00 KB",
-          "remaining": "250.00 MB",
-          "subscriber_number": "U0NfXwDurY2h--5U-99iwegZq5LxwhkLpTbDwupR5DHn6tveFcNNgUzmlYZuY8EAJy0Hu1_7s60au6sm5CQJKMAq"
-        },
-        {
-          "status": "ACTIVE",
-          "member_id": "U0NfX-ftlDGNvTko3u9pqE4zqF464vHRwTaZHh4gcYfmbhlBtM36NZ4TQKfZG2NJoz2OfPS2I0LMc6fYJXGueoU",
-          "member_name": "kujo",
-          "msisdn": "62878764",
-          "join_date": "2025-10-21 19:59:26",
-          "member_role": "MEMBER",
-          "slot_type": "FREE",
-          "allocation": "250.00 MB",
-          "consumption": "2.00 KB",
-          "remaining": "250.00 MB",
-          "subscriber_number": "U0NfX5wPHbUldBbyKyOuw4nCf7HyYlu8rLxeIbSqS0GbvrCyFDi9Ox4bnkznPbzr5lPlbm0Dnl5jqZAI9BuFQEWe"
-        },
-        {
-          "status": "ACTIVE",
-          "member_id": "U0NfX0Vg_v9NQFxPlwiRHB4sE7CWkJvXasaeagKwPpkqiMK1dW9mg09tHkk9fskC9c4vQaq88cWn4mKyH_OjgXE",
-          "member_name": "kujo",
-          "msisdn": "6287789",
-          "join_date": "2025-10-21 20:00:22",
-          "member_role": "MEMBER",
-          "slot_type": "FREE",
-          "allocation": "250.00 MB",
-          "consumption": "2.00 KB",
-          "remaining": "250.00 MB",
-          "subscriber_number": "U0NfX80WyJMrYPPjBkv9-zIFyxB3XxhSTukNwBipS5w5MZt4iusUjnYYqoFIVV05r3kHcaZqc9kZByd2VaV6tc8u"
-        },
-        {
-          "status": "ACTIVE",
-          "member_id": "U0NfXwAjmg4HFLdJoDJhBQwgLJJqeaycmlBkWeR1slMaBwKmt7y7fRAUZtwL-haQFpO8K3ICmJSv1CNUmyDis2c",
-          "member_name": "kuujjo",
-          "msisdn": "62819997",
-          "join_date": "2025-10-22 11:02:33",
-          "member_role": "MEMBER",
-          "slot_type": "FREE",
-          "allocation": "250.00 MB",
-          "consumption": "1.00 KB",
-          "remaining": "250.00 MB",
-          "subscriber_number": "U0NfX-NsEWSN-BZzqlbu7w8yXGT-rURTAufFkFqh6OKdvgeQm1l3WowyrxRwZNfL98CyADy_Usc8THmpZkczvm_o6A"
+          "subscriber_number": "U0NfX6DacoU1rrcunMFRtZXJx6r9HcfUQUQBdjYSDfjQ3jRzfLxKybAsv4y2900mbQdBGdEfDqikVGevNpk7Y8a7",
+          "total": "25.00 GB",
+          "pemakaian": "2.00 KB",
+          "tersisa": "25.00 GB"
         }
       ]
     },
     "info_saldo_panel": {
-      "id_telegram": "68639",
+      "id_telegram": "686399",
       "role": "admin",
       "saldo_tersedia": 50000,
       "catatan": "Saldo tidak dipotong"
