@@ -1424,7 +1424,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   Pada bagian "list_bonus" bisa di isi seperti ini sesuai kebutuhan:
     => "list_bonus": "list" = ( untuk melihat list bonus yang tersedia)
     => "list_bonus": "all" = (untuk mengeklaim semua bonus yang tersedia)
-    => "list_bonus": "1" = (untuk megklaim bonus satuan, contoh klaim bonus nomor 1 maka yang ke klaim bonus nomor 1)
+    => "list_bonus": "1" = (untuk mengklaim bonus satuan, contoh klaim bonus nomor 1 maka yang ke klaim bonus nomor 1)
 ```
 
   - Action (bonus)
