@@ -1137,6 +1137,7 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
   => bonus = ( Klaim bonus yang tersedia)
 ```
 
+  <details> <summary>=> Action (help) (klik utuk lihat)</summary>
   - Action (help)
 ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
@@ -1180,6 +1181,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   ]
 }
 ```
+  </details>
 
   - Action (validasi_nomor)
 ```bash
