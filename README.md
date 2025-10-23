@@ -1185,6 +1185,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   </details>
 
   <details> <summary> => Action (validasi_nomor) (klik utuk lihat)</summary>
+
     - Action (validasi_nomor)
   ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
@@ -1225,6 +1226,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
 
   <details> <summary> => Action (create) (klik utuk lihat)</summary>
+
     - Action (create)
   ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
@@ -1278,6 +1280,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   </details>
 
   <details> <summary> => Action (invite) (klik utuk lihat)</summary>
+
     - Action (invite)
   ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
@@ -1326,6 +1329,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   </details>
 
   <details> <summary> => Action (info) (klik utuk lihat)</summary>
+
     - Action (info)
   ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
@@ -1411,6 +1415,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   </details>
 
   <details> <summary>=> Action (bonus) (klik utuk lihat)</summary>
+  
     - keterangan untuk action (bonus)
   ```ini
   Pada bagian "list_bonus" bisa di isi seperti ini sesuai kebutuhan:
