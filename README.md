@@ -1137,7 +1137,7 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
   => bonus = ( Klaim bonus yang tersedia)
 ```
 
-  <details> <summary>=> Action (help) (klik utuk lihat)</summary>
+  <details> <summary> => Action (help) (klik utuk lihat)</summary>
 
     - Action (help)
   ```bash
@@ -1184,8 +1184,9 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 ```
   </details>
 
-  - Action (validasi_nomor)
-```bash
+  <details> <summary> => Action (validasi_nomor) (klik utuk lihat)</summary>
+    - Action (validasi_nomor)
+  ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
 {
  "action": "validasi_nomor",
@@ -1194,7 +1195,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "nomor_admin": "nomor pengelola yang mau di pake",
  "nomor_anggota": "nomor anggota"
 }'
-```
+  ```
 
   - Respon nomor valid, action (validasi_nomor)
 ```json
@@ -1220,10 +1221,12 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   "stderr": ""
 }
 ```
+  </details>
 
 
-  - Action (create)
-```bash
+  <details> <summary> => Action (create) (klik utuk lihat)</summary>
+    - Action (create)
+  ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
 {
  "action": "create",
@@ -1235,7 +1238,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "nama_admin": "nama pengelola circel",
  "nama_anggota": "nama anggota circel"
 }'
-```
+  ```
 
   - Respon sukses action (create)
 ```json
@@ -1272,9 +1275,11 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   "stderr": ""
 }
 ```
+  </details>
 
-  - Action (invite)
-```bash
+  <details> <summary> => Action (invite) (klik utuk lihat)</summary>
+    - Action (invite)
+  ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "action": "invite",
  "id_telegram": "68639",
@@ -1283,7 +1288,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "nomor_anggota": "nomor anggota",
  "nama_anggota": "nama anggota circel"
 }'
-```
+  ```
 
   - Respon Sukses action (invite)
 ```json
@@ -1318,16 +1323,18 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   "stderr": ""
 }
 ```
+  </details>
 
-  - Action (info)
-```bash
+  <details> <summary> => Action (info) (klik utuk lihat)</summary>
+    - Action (info)
+  ```bash
 curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "action": "info",
  "id_telegram": "68639",
  "password": "5aeb1fb7b",
  "nomor_admin": "nomor pengelola yang mau di pake"
 }'
-```
+  ```
 
   - Respon sukses action (info)
 ```json
@@ -1401,14 +1408,16 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   "stderr": ""
 }
 ```
+  </details>
 
-  - keterangan untuk action (bonus)
-```ini
+  <details> <summary>=> Action (bonus) (klik utuk lihat)</summary>
+    - keterangan untuk action (bonus)
+  ```ini
   Pada bagian "list_bonus" bisa di isi seperti ini sesuai kebutuhan:
     => "list_bonus": "list" = ( untuk melihat list bonus yang tersedia)
     => "list_bonus": "all" = (untuk mengeklaim semua bonus yang tersedia)
     => "list_bonus": "1" = (untuk mengklaim bonus satuan, contoh klaim bonus nomor 1 maka yang ke klaim bonus nomor 1)
-```
+  ```
 
   - Action (bonus)
 ```bash
@@ -1425,4 +1434,5 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 ```json
 blom ada contoh aihihihi:v
 ```
+  </details>
 </details>
