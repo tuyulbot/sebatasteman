@@ -1200,7 +1200,23 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
   - Respon nomor valid, action (validasi_nomor)
 ```json
-
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "code": "200-2001",
+    "message": "Nomor valid lanjut proses invite anggota circel.",
+    "detail": "Input msisdn is eligible",
+    "info_saldo_panel": {
+      "id_telegram": "6863",
+      "role": "admin",
+      "saldo_tersedia": 50000,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
 ```
   - Respon nomor tidak valid, action (validasi_nomor)
 ```json
@@ -1415,7 +1431,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   </details>
 
   <details> <summary>=> Action (bonus) (klik utuk lihat)</summary>
-  
+
     - keterangan untuk action (bonus)
   ```ini
   Pada bagian "list_bonus" bisa di isi seperti ini sesuai kebutuhan:
