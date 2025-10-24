@@ -1135,6 +1135,7 @@ curl -X POST 'https://api.hidepulsa.com/api/ppob' -H 'Content-Type:application/j
   => invite = (Invite anggota circel baru, sudah auto acc anggota )
   => info = ( info detail anggota + sisa kuota)
   => bonus = ( Klaim bonus yang tersedia)
+  => kick = ( kick anggota di circel anda)
 ```
 
   <details> <summary> => Action (help) (klik utuk lihat)</summary>
@@ -1451,9 +1452,196 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 }'
 ```
 
-  - Respon sukses action (bonus)
+  - Respon list action (bonus)
 ```json
-blom ada contoh aihihihi:v
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Ditemukan 1 bonus.",
+    "count": 1,
+    "bonuses": [
+      {
+        "index": 1,
+        "title": "Welcome Bonus, 250MB",
+        "description": "-",
+        "action_param": "U0NfXyAo6RnRgqSKs",
+        "status": "-"
+      }
+    ],
+    "note": "Gunakan argumen nomor bonus untuk klaim, misal: python3 -m dor.circle.bonus <nomor> <id_telegram> 2",
+    "info_saldo_panel": {
+      "id_telegram": "13165",
+      "role": "admin",
+      "saldo_tersedia": 150125,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Respon sukses klaim bonus (satuan), action (kick)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "group": {
+      "group_id": "U0NfXw5L5vp4pzr",
+      "group_name": "anu",
+      "owner_name": "",
+      "group_status": "ACTIVE"
+    },
+    "selected": [
+      1
+    ],
+    "count": 1,
+    "results": [
+      {
+        "status": "ok",
+        "bonus": {
+          "option_code": "U0NfXw0SjR7YHQ4RCh4",
+          "name": "Welcome Bonus XL Circle"
+        },
+        "resp": {
+          "code": "000",
+          "status": "SUCCESS",
+          "data": {
+            "transaction_code": "0593904",
+            "total_amount": 0,
+            "can_trigger_rating": false,
+            "points_gained": 0,
+            "payment_method": "BALANCE",
+            "details": [
+              {
+                "amount": 0,
+                "code": "U0NfXzM1Lx-_P6skO_Le",
+                "name": "Bonus XL Circle",
+                "status": "SUCCESS"
+              }
+            ],
+            "deeplink": "",
+            "have_offer": false
+          }
+        },
+        "bonus_index": 1
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "13165",
+      "role": "admin",
+      "saldo_tersedia": 150125,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+  </details>
+
+  <details> <summary>=> Action (kick) (klik utuk lihat)</summary>
+
+    - keterangan untuk action (kick)
+  ```ini
+  Pada bagian "kick_nomor" bisa di isi seperti ini sesuai kebutuhan:
+    => "kick_nomor": "list" = ( untuk melihat list anggota)
+    => "kick_nomor": "1" = (untuk mengkick anggota dari circel anda, contoh klaim bonus nomor 1 maka yang terkick di nomor 1)
+  ```
+
+  - Action (kick)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "kick",
+ "id_telegram": "68639",
+ "password": "5aeb1fb7b",
+ "nomor_admin": "nomor pengelola yang mau di pake"
+ "kick_nomor": "bisa di cek di keterangan untuk action (kick) jika bingung"
+}'
+```
+
+  - Respon list action (kick)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "mode": "list",
+    "noted": "Jika status di member CANCELLED anggota tersebut sudah tidak aktif di Circle / sudah kick.",
+    "total_member_non_parent": 4,
+    "members": [
+      {
+        "index": 1,
+        "member_name": "anuuer",
+        "member_role": "MEMBER",
+        "slot_type": "FREE",
+        "status": "CANCELLED",
+        "msisdn": "62877"
+      },
+      {
+        "index": 2,
+        "member_name": "anuer",
+        "member_role": "MEMBER",
+        "slot_type": "FREE",
+        "status": "CANCELLED",
+        "msisdn": "62877"
+      },
+      {
+        "index": 3,
+        "member_name": "anuer",
+        "member_role": "MEMBER",
+        "slot_type": "FREE",
+        "status": "CANCELLED",
+        "msisdn": "62877"
+      },
+      {
+        "index": 4,
+        "member_name": "jhgf",
+        "member_role": "MEMBER",
+        "slot_type": "FREE",
+        "status": "CANCELLED",
+        "msisdn": "628"
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "131659",
+      "role": "admin",
+      "saldo_tersedia": 150125,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Respon succes kick action (kick)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "kick_member circle berhasil",
+    "group_id": "U0NfX86ao6m",
+    "member": {
+      "member_id": "U0NfX8CpsymMkxk8kZ",
+      "member_name": "g",
+      "member_role": "MEMBER",
+      "slot_type": "FREE",
+      "msisdn": "62877413"
+    },
+    "info_saldo_panel": {
+      "id_telegram": "131659",
+      "role": "admin",
+      "saldo_tersedia": 150125,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
 ```
   </details>
 </details>
