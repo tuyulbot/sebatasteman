@@ -1439,6 +1439,9 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
     => "list_bonus": "list" = ( untuk melihat list bonus yang tersedia)
     => "list_bonus": "all" = (untuk mengeklaim semua bonus yang tersedia)
     => "list_bonus": "1" = (untuk mengklaim bonus satuan, contoh klaim bonus nomor 1 maka yang ke klaim bonus nomor 1)
+
+  Noted: 
+    => jika respon klaim bonus ada pesan seperti ini (HTTP_CLIENT_RESPONSE_ERR) coba di retry kembali apinya
   ```
 
   - Action (bonus)
@@ -1470,7 +1473,6 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         "status": "-"
       }
     ],
-    "note": "Gunakan argumen nomor bonus untuk klaim, misal: python3 -m dor.circle.bonus <nomor> <id_telegram> 2",
     "info_saldo_panel": {
       "id_telegram": "13165",
       "role": "admin",
@@ -1489,49 +1491,54 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   "code": 0,
   "data": {
     "status": "success",
-    "group": {
-      "group_id": "U0NfXw5L5vp4pzr",
-      "group_name": "anu",
-      "owner_name": "",
-      "group_status": "ACTIVE"
-    },
-    "selected": [
-      1
-    ],
-    "count": 1,
-    "results": [
+    "message": "Bonus berhasil diklaim.",
+    "group_name": "hhjk",
+    "owner_name": "",
+    "total_bonus": 1,
+    "sukses": 1,
+    "gagal": 0,
+    "bonus": [
       {
-        "status": "ok",
-        "bonus": {
-          "option_code": "U0NfXw0SjR7YHQ4RCh4",
-          "name": "Welcome Bonus XL Circle"
-        },
-        "resp": {
-          "code": "000",
-          "status": "SUCCESS",
-          "data": {
-            "transaction_code": "0593904",
-            "total_amount": 0,
-            "can_trigger_rating": false,
-            "points_gained": 0,
-            "payment_method": "BALANCE",
-            "details": [
-              {
-                "amount": 0,
-                "code": "U0NfXzM1Lx-_P6skO_Le",
-                "name": "Bonus XL Circle",
-                "status": "SUCCESS"
-              }
-            ],
-            "deeplink": "",
-            "have_offer": false
-          }
-        },
-        "bonus_index": 1
+        "index": 1,
+        "nama_bonus": "Welcome Bonus XL Circle",
+        "status": "SUCCESS",
+        "pesan": ""
       }
     ],
     "info_saldo_panel": {
-      "id_telegram": "13165",
+      "id_telegram": "1316596",
+      "role": "admin",
+      "saldo_tersedia": 150125,
+      "catatan": "Saldo tidak dipotong"
+    }
+  },
+  "stderr": ""
+}
+```
+
+  - Respon Eror klaim bonus action (bonus)
+```json
+{
+  "status": "error",
+  "code": 0,
+  "data": {
+    "status": "error",
+    "message": "Beberapa bonus gagal diklaim.",
+    "group_name": "PRIBADI",
+    "owner_name": "AKU",
+    "total_bonus": 1,
+    "sukses": 0,
+    "gagal": 1,
+    "bonus": [
+      {
+        "index": 1,
+        "nama_bonus": "Bonus Kuota Circle",
+        "status": "FAILED",
+        "pesan": "HTTP_CLIENT_REQUEST_ERR"
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "1316596",
       "role": "admin",
       "saldo_tersedia": 150125,
       "catatan": "Saldo tidak dipotong"
