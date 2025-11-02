@@ -845,6 +845,7 @@ blom ada data
 - cek_dompul (mengecek kuota via api dompul)
 - cek_sms (mengecek sms gagal dri myxl untuk pembelian addon xuts && xutp )
 - cek_tt  (mengecek diskon nomor untuk paket unli turbo TikTok dll)
+- control_profil ( mengnon aktifkan fitur jaga pulsa dan lainya seperti sms mbanking dll)
 ```
 
   - action (cek_saldo)
@@ -977,6 +978,50 @@ curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/
 ```
 
   - Noted : untuk pembelian tiktok stiap nomor harga paket tiktok berbeda2, harga paket tiktok yang bisa di beli harga 30.000 pasti bisa di beli
+
+  - action (control_profil)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "control_profil",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(masukan nomor hp)",
+ "is_locked": "False" # ( False = OFF (mati fiturnya) / True = ON (aktif fitur jaga pulsa, sms mbanking dll))
+}'
+```
+
+  - respon action (cek_tt)
+```json
+{
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "noted": "jika status is_locked adalah null, di coba besok 1x24 jam lagi atau di coba beberapa saat lagi",
+    "target_is_locked": true,
+    "processed_types": [
+      "RBTSMS",
+      "SMSBANK",
+      "DATA"
+    ],
+    "final_balance_lock_status": [
+      {
+        "type": "RBTSMS",
+        "is_locked": true
+      },
+      {
+        "type": "SMSBANK",
+        "is_locked": true
+      },
+      {
+        "type": "DATA",
+        "is_locked": true
+      }
+    ]
+  },
+  "stderr": ""
+}
+```
 </details>
 
 
