@@ -1697,3 +1697,278 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 ```
   </details>
 </details>
+
+<details> <summary>7. Pembelian paket INDOSAT & TRI :v (klik utuk lihat)</summary>
+
+  - List Action 
+```ini
+  => reqotp_isat & reqotp_tri = (untuk login nomor indosat atau tri)
+  => validotp_isat & validotp_tri = (untuk memvalidasi otp yang di kirim melalu sms)
+  => cekkuota_isat & cekkuota_tri = (mengecek kuota indosat & tri)
+  => cekprofil_isat & cekprofil_tri = (mengecek data profil kartumu indosat & tri)
+  => bycatid = (untuk membeli paket indosat)
+     <=> Payment support:
+        - dana
+        - ovo
+        - gopay
+        - shopee
+        - qris
+        - pulsa
+```
+
+  <details> <summary> => Action reqotp_isat & reqotp_tri (klik utuk lihat)</summary>
+
+    - Action (reqotp_isat)
+    ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/login/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "reqotp_isat",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+    ```
+
+    - Respon sukses (reqotp_isat)
+    ```json
+    {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "OTP berhasil dikirim!"
+  },
+  "stderr": ""
+}
+    ```
+
+    - Action (reqotp_tri)
+    ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/login/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "reqotp_tri",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08987"
+}'
+    ```
+
+    - Respon sukses (reqotp_tri)
+    ```json
+    {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "OTP berhasil dikirim!"
+  },
+  "stderr": ""
+}
+    ```
+
+  </details>
+
+  <details> <summary> => Action (validotp_isat & validotp_tri) (klik utuk lihat)</summary>
+
+  - Action (validotp_isat)
+  ```bash
+  curl -X POST 'https://api.hidepulsa.com/api/login/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "validotp_isat",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587",
+ "otp": "876789"
+}'
+  ```
+
+  - Respon sukses (validotp_isat)
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Login succes!",
+    "data": {
+        (respon data login)
+    }
+  },
+  "stderr": ""
+}
+  ```
+
+  - Action (validotp_tri)
+  ```bash
+  curl -X POST 'https://api.hidepulsa.com/api/login/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "validotp_tri",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08987",
+ "otp": "876789"
+}'
+  ```
+
+  - Respon sukses (validotp_tri)
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "success",
+    "message": "Login succes!",
+    "data": {
+        (respon data login)
+    }
+  },
+  "stderr": ""
+}
+  ```
+
+  </details>
+
+  <details> <summary> => Action (cekkuota_isat & cekkuota_tri) (klik utuk lihat)</summary>
+
+  - Action (cekkuota_isat)
+  ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "cekkuota_isat",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+    ```
+
+    - Respon sukses (cekkuota_isat)
+    ```json
+    masih dalam pembuatan tunggu saja:v
+    ```
+
+    - Action (cekkuota_tri)
+  ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "cekkuota_tri",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+    ```
+
+    - Respon sukses (cekkuota_tri)
+    ```json
+    masih dalam pembuatan tunggu saja:v
+    ```
+  </details>
+
+  <details> <summary> => Action (cekkprofil_isat & cekprofil_tri) (klik utuk lihat)</summary>
+  
+  - Action (cekprofil_isat)
+  ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "cekprofil_isat",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+    ```
+
+    - Respon sukses (cekprofil_isat)
+    ```json
+    masih dalam pembuatan tunggu saja:v
+    ```
+  - Action (cekprofil_tri)
+  ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "cekprofil_tri",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+    ```
+
+    - Respon sukses (cekprofil_tri)
+    ```json
+    masih dalam pembuatan tunggu saja:v
+    ```
+  </details>
+
+  <details> <summary> => Action (bycatid) (klik utuk lihat)</summary>
+
+  - Action (bycatid)
+  ```bash
+  curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "kode": "bycatid",
+ "nomor_hp": "08560",
+ "payment": "qris",
+ "id_telegram": "13165",
+ "nama_paket": "Freedom Internet 1.5GB",
+ "password": "5db069a3b9f3b36"
+}'
+  ```
+
+  - Respon Sukses (bycatid)
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "info_saldo_panel": {
+    "id_telegram": "13165",
+    "role": "admin",
+    "harga_awal": 500,
+    "diskon": 0,
+    "saldo_dipotong": 0,
+    "saldo_sisa": 151125
+  },
+  "data": {
+    "status": "success",
+    "message": "Pembelian paket berhasil",
+    "initiate_response": {
+      "nama_paket": "Freedom Internet 1.5GB",
+      "method_pembayaran": "QRIS",
+      "harga": "Rp7.000",
+      "actionData": "00020101021226640015ID.OTTOCASH.WWW01189360081110019603230212OP1D012852770303UME51440014ID.CO.QRIS.WWW0215ID10243242168280303UME520448145303360540470005802ID5903IOH6015Jl. Medan Merde61051011062720120BILL03233455924529070521SP17647796957918171390703A019612OP1D012852776304B8C8",
+      "transid": "SUP1522361764779",
+      "uniqueTransactionCode": "SUP15223617647796",
+      "expiryTime": 10,
+      "nmid": "ID1024324",
+      "servicebetransid": "SUP15223617647796",
+      "protip": "Kamu bisa melihat pemakaian data kamu melalui halaman akun"
+    },
+    "info_saldo_panel": {
+      "id_telegram": "13165",
+      "role": "admin",
+      "harga_awal": 500,
+      "diskon": 0,
+      "saldo_dipotong": 0,
+      "saldo_sisa": 151125
+    }
+  },
+  "stderr": ""
+}
+  ```
+
+  - Respon Gagal (bycatid)
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": false,
+    "message": "mohon di jeda 10 menit kalo gagal terus, atau bisa di coba lagi beberapa saat lagi, karena pembayaran EWALET tidak bisa di spam ",
+    "initiate_response": {
+      "status": "1",
+      "code": "10019",
+      "message": "we can not process your request",
+      "transid": "SUP152236176477115",
+      "data": {
+        "servicedesc": "Failed_NoSession",
+        "transid": "SUP1522361764771155",
+        "servicename": "INITIATE PAYMENT",
+        "servicestatus": "99",
+        "msisdn": "628560"
+      }
+    }
+  },
+  "stderr": ""
+}
+  ```
+  </details>
+</details>
+
