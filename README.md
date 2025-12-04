@@ -144,12 +144,6 @@ curl -X GET 'http://api.hidepulsa.com/api/v1/ubah-password?id_telegram=(masukan 
 
 <details> <summary>2. Pembelian paket (klik untuk lihat)</summary>
 
-  - List Api:
-```bash
-- produk (digunakan untuk melihat produk yang tersedia)
-- dor (digunakan untuk pembelian)
-```
-
   - list kode_buy:
 ```bash
 Noted :
