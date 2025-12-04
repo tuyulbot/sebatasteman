@@ -1,6 +1,37 @@
 ###        Tutorial pembuatan donat bolong kentang
 ###           Semoga membantu:v
 
+  - Get Produk:
+```bash
+curl -X GET 'https://api.hidepulsa.com/api/v1/produk' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
+```
+
+  - Respon
+```json
+{
+  "status": "success",
+  "total": 2,
+  "data": [
+    {
+      "nama_paket": "Xtra Combo Spesial 8GB",
+      "harga_panel": 3000,
+      "kode_buy": "pancinganv1",
+      "payment_suport": "dana, shopee, gopay",
+      "deskripsi": "Rincian Benefit\\n\\n- Kuota Utama: 1.00 GB\\n   * 00:00 - 24:00\\n- YouTube: 1.00 GB\\n- Kuota Area Semua Jaringan: 5.00 GB\\n   * 00:00 - 24:00\\n- Kuota Youtube: 1.00 GB\\n- Telp ke Semua Operator: 300 detik\\n   * 00:00-24:00\\n   * Expired: 30 Hari",
+      "provider": "xl"
+    },
+    {
+      "nama_paket": "Freedom Internet 1.5GB",
+      "harga_panel": 500,
+      "kode_buy": "bycatid",
+      "payment_suport": "dana, ovo, gopay, shopee, qris, pulsa",
+      "deskripsi": null,
+      "provider": "indosat"
+    }
+  ]
+}
+```
+
 <details> <summary>1. Login Nomor (klik untuk lihat)</summary>
 
   - List API:
@@ -129,35 +160,6 @@ Slalu melihat kode_buy di api get produk, di stiap paket stiap paket ada kode_bu
 - addon_dana
 - addon_satuan
 - addon_slow ( di khusukan untuk pembelian addon xuts dan xutp)
-```
-
-  - Get Produk:
-```bash
-curl -X GET 'https://api.hidepulsa.com/api/v1/produk' -H 'Authorization:(ganti dengan api-key , minta ke admin)'
-```
-
-  - Respon
-```json
-{
-  "status": "success",
-  "total": 2,
-  "data": [
-    {
-      "nama_paket": "Xtra Combo Spesial 8GB",
-      "harga_panel": 3000,
-      "kode_buy": "pancinganv1",
-      "payment_suport": "dana, shopee, gopay",
-      "deskripsi": "Rincian Benefit\\n\\n- Kuota Utama: 1.00 GB\\n   * 00:00 - 24:00\\n- YouTube: 1.00 GB\\n- Kuota Area Semua Jaringan: 5.00 GB\\n   * 00:00 - 24:00\\n- Kuota Youtube: 1.00 GB\\n- Telp ke Semua Operator: 300 detik\\n   * 00:00-24:00\\n   * Expired: 30 Hari"
-    },
-    {
-      "nama_paket": "Edukasi 2GB",
-      "harga_panel": 100,
-      "kode_buy": "no_pancingan",
-      "payment_suport": "dana, shopee, gopay, pulsa",
-      "deskripsi": "Rincian Benefit \\n\\n- Paket internet edukasi: 2.00 GB\\n   * 00:00-24:00\\n   * Expired: 1 Hari"
-    }
-  ]
-}
 ```
 
   - Pembelian:
@@ -1714,6 +1716,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         - shopee
         - qris
         - pulsa
+  Noted : Cek produk sama seperti xl cuma di setiap paket ada tambahan "provider": "xl", "provider": "indosat", "provider": "tri"
 ```
 
   <details> <summary> => Action reqotp_isat & reqotp_tri (klik utuk lihat)</summary>
