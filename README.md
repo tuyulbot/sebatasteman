@@ -1834,14 +1834,14 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "password": "5db069a3b9f3b36c38",
  "nomor_hp": "08587"
 }'
-    ```
+  ```
 
-    - Respon sukses (cekkuota_isat)
-    ```json
+  - Respon sukses (cekkuota_isat)
+  ```json
     masih dalam pembuatan tunggu saja:v
-    ```
+  ```
 
-    - Action (cekkuota_tri)
+  - Action (cekkuota_tri)
   ```bash
     curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "action": "cekkuota_tri",
@@ -1849,12 +1849,12 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "password": "5db069a3b9f3b36c38",
  "nomor_hp": "08587"
 }'
-    ```
+  ```
 
-    - Respon sukses (cekkuota_tri)
-    ```json
+  - Respon sukses (cekkuota_tri)
+  ```json
     masih dalam pembuatan tunggu saja:v
-    ```
+  ```
   </details>
 
   <details> <summary> => Action (cekkprofil_isat & cekprofil_tri) (klik utuk lihat)</summary>
@@ -1867,12 +1867,12 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "password": "5db069a3b9f3b36c38",
  "nomor_hp": "08587"
 }'
-    ```
+  ```
 
-    - Respon sukses (cekprofil_isat)
-    ```json
+  - Respon sukses (cekprofil_isat)
+  ```json
     masih dalam pembuatan tunggu saja:v
-    ```
+  ```
   - Action (cekprofil_tri)
   ```bash
     curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
@@ -1881,12 +1881,12 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "password": "5db069a3b9f3b36c38",
  "nomor_hp": "08587"
 }'
-    ```
+  ```
 
-    - Respon sukses (cekprofil_tri)
-    ```json
+  - Respon sukses (cekprofil_tri)
+  ```json
     masih dalam pembuatan tunggu saja:v
-    ```
+  ```
   </details>
 
   <details> <summary> => Action (bycatid) (klik utuk lihat)</summary>
@@ -1970,5 +1970,5 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 }
   ```
   </details>
-</details>
 
+</details>
