@@ -1714,6 +1714,9 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         - qris
         - pulsa
   => bycatid = (untuk membeli paket indosat)
+     <+> Perintah cmd
+        - "cmd": "list" = (untuk melihat list produk flash sale / hot promo)
+        - "cmd": "1" = (memlihi paket yang ada di respon list dan menggunakan ID paket yang ada di list contoh = "2")
   => byflashsale = (untuk membeli paket Hot Promo / Flash Sale)
      <+> Perintah cmd
         - "cmd": "list" = (untuk melihat list produk flash sale / hot promo)
@@ -1897,19 +1900,80 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
   <details> <summary> => Pembelian (klik utuk lihat)</summary>
 
-  - Action (bycatid)
+  - Action (bycatid) cmd "list"
   ```bash
   curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "kode": "bycatid",
  "nomor_hp": "08560",
+ "cmd": "list"
  "payment": "qris",
  "id_telegram": "13165",
- "nama_paket": "Freedom Internet 1.5GB",
+ "nama_paket": "Category Freedom Internet Harian",
  "password": "5db069a3b9f3b36"
 }'
   ```
 
-  - Respon Sukses (bycatid)
+  - Respon (bycatid) cmd "list"
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "info_saldo_panel": {
+    "id_telegram": "1316596",
+    "role": "admin",
+    "harga_awal": 0,
+    "diskon": 0,
+    "saldo_dipotong": 0,
+    "saldo_sisa": 151125
+  },
+  "data": {
+    "status": "success",
+    "message": "List paket Freedom Internet Harian , pilih menggunakan ID paket",
+    "data": [
+      {
+        "id": 1,
+        "package_name": "Freedom Internet 22GB/14 Hari",
+        "harga": 50000,
+        "harga_display": "Rp 50.000",
+        "paymentchannels": "CARD,OVO,GOPAY,VA_MANDIRI,VA_BNI,VA_BRI,VA_BCA,VA_BERSAMA,UCAN,SHOPEE_PAY,DANA,QRIS,INDEPAY",
+        "expiry": "14 Hari"
+      },
+      {
+        "id": 2,
+        "package_name": "Freedom Internet 15GB",
+        "harga": 30000,
+        "harga_display": "Rp 30.000",
+        "paymentchannels": "CARD,OVO,GOPAY,VA_MANDIRI,VA_BNI,VA_BRI,VA_BCA,VA_BERSAMA,UCAN,SHOPEE_PAY,DANA,QRIS,INDEPAY",
+        "expiry": "7 Hari"
+      }
+    ],
+    "info_saldo_panel": {
+      "id_telegram": "131659",
+      "role": "admin",
+      "harga_awal": 0,
+      "diskon": 0,
+      "saldo_dipotong": 0,
+      "saldo_sisa": 151125
+    }
+  },
+  "stderr": ""
+}
+  ```
+
+  - Action (bycatid) cmd id paket contoh "1"
+  ```bash
+  curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "kode": "bycatid",
+ "nomor_hp": "08560",
+ "cmd": "1"
+ "payment": "qris",
+ "id_telegram": "13165",
+  "nama_paket": "Category Freedom Internet Harian",
+ "password": "5db069a3b9f3b36"
+}'
+  ```
+
+  - Respon Sukses (bycatid) cmd id paket contoh "1"
   ```json
   {
   "status": "success",
@@ -1984,6 +2048,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "cmd": "2",
  "payment": "qris",
  "id_telegram": "13165",
+ "nama_paket": "Category Flash Sale", 
  "password": "5db069a3b9f3b36"
 }'
   ```
@@ -2037,6 +2102,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
  "cmd": "list",
  "payment": "qris",
  "id_telegram": "13165",
+ "nama_paket": "Category Flash Sale",
  "password": "5db069a3b9f3b36"
 }'
   ```
