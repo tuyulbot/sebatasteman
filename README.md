@@ -1727,18 +1727,18 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
   <details> <summary> => Action reqotp_isat & reqotp_tri (klik utuk lihat)</summary>
 
-    - Action (reqotp_isat)
-    ```bash
+  - Action (reqotp_isat)
+  ```bash
     curl -X POST 'https://api.hidepulsa.com/api/login/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "action": "reqotp_isat",
  "id_telegram": "1316",
  "password": "5db069a3b9f3b36c38",
  "nomor_hp": "08587"
 }'
-    ```
+  ```
 
-    - Respon sukses (reqotp_isat)
-    ```json
+  - Respon sukses (reqotp_isat)
+  ```json
     {
   "status": "success",
   "code": 0,
@@ -1748,20 +1748,20 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   },
   "stderr": ""
 }
-    ```
+  ```
 
-    - Action (reqotp_tri)
-    ```bash
+  - Action (reqotp_tri)
+  ```bash
     curl -X POST 'https://api.hidepulsa.com/api/login/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "action": "reqotp_tri",
  "id_telegram": "1316",
  "password": "5db069a3b9f3b36c38",
  "nomor_hp": "08987"
 }'
-    ```
+  ```
 
-    - Respon sukses (reqotp_tri)
-    ```json
+  - Respon sukses (reqotp_tri)
+  ```json
     {
   "status": "success",
   "code": 0,
@@ -1771,7 +1771,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   },
   "stderr": ""
 }
-    ```
+  ```
 
   </details>
 
@@ -1797,7 +1797,20 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
     "status": "success",
     "message": "Login succes!",
     "data": {
-        (respon data login)
+      "status": "0",
+      "code": "10014",
+      "message": "Success",
+      "transid": "SUP159140176551858431",
+      "data": {
+        "tokenid": "eyJhbGciOi",
+        "userclass": "CL-1112",
+        "defaultpage": "home",
+        "status": "true",
+        "pdp": true,
+        "cid": "7413bfa9e7823c54201d46f4",
+        "newuser": "false",
+        "usertype": "PREPAID"
+      }
     }
   },
   "stderr": ""
