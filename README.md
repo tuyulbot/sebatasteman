@@ -1931,16 +1931,8 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   {
   "status": "success",
   "code": 0,
-  "info_saldo_panel": {
-    "id_telegram": "1316596",
-    "role": "admin",
-    "harga_awal": 0,
-    "diskon": 0,
-    "saldo_dipotong": 0,
-    "saldo_sisa": 151125
-  },
   "data": {
-    "status": "success",
+    "status": "list",
     "message": "List paket Freedom Internet Harian , pilih menggunakan ID paket",
     "data": [
       {
@@ -1959,15 +1951,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         "paymentchannels": "CARD,OVO,GOPAY,VA_MANDIRI,VA_BNI,VA_BRI,VA_BCA,VA_BERSAMA,UCAN,SHOPEE_PAY,DANA,QRIS,INDEPAY",
         "expiry": "7 Hari"
       }
-    ],
-    "info_saldo_panel": {
-      "id_telegram": "131659",
-      "role": "admin",
-      "harga_awal": 0,
-      "diskon": 0,
-      "saldo_dipotong": 0,
-      "saldo_sisa": 151125
-    }
+    ]
   },
   "stderr": ""
 }
@@ -2125,16 +2109,8 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   {
   "status": "success",
   "code": 0,
-  "info_saldo_panel": {
-    "id_telegram": "13165",
-    "role": "admin",
-    "harga_awal": 0,
-    "diskon": 0,
-    "saldo_dipotong": 0,
-    "saldo_sisa": 151125
-  },
   "data": {
-    "status": "success",
+    "status": "list",
     "message": "List paket flash sale, pilih menggunakan ID paket",
     "data": [
       {
@@ -2153,15 +2129,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         "harga_display": "Rp25.000",
         "paymentchannels": "GOPAY,OVO,SHOPEEPAY,DANA,LINK,INDEPAY,IMKAS,QRIS"
       }
-    ],
-    "info_saldo_panel": {
-      "id_telegram": "1316596",
-      "role": "admin",
-      "harga_awal": 0,
-      "diskon": 0,
-      "saldo_dipotong": 0,
-      "saldo_sisa": 151125
-    }
+    ]
   },
   "stderr": ""
 }
