@@ -1717,10 +1717,12 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
      <+> Perintah cmd
         - "cmd": "list" = (untuk melihat list produk flash sale / hot promo)
         - "cmd": "1" = (memlihi paket yang ada di respon list dan menggunakan ID paket yang ada di list contoh = "2")
+        - Tambahkan payload ("deskripsi": true) untuk menampilkan deskirpsi paket by ID PAKET
   => byflashsale = (untuk membeli paket Hot Promo / Flash Sale)
      <+> Perintah cmd
         - "cmd": "list" = (untuk melihat list produk flash sale / hot promo)
         - "cmd": "1" = (memlihi paket yang ada di respon list dan menggunakan ID paket yang ada di list contoh = "2")
+        - Tambahkan payload ("deskripsi": true) untuk menampilkan deskirpsi paket by ID PAKET
     
   Noted : Cek produk sama seperti xl cuma di setiap paket ada tambahan "provider": "xl", "provider": "indosat", "provider": "tri"
 ```
@@ -1913,12 +1915,13 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
   <details> <summary> => Pembelian (klik utuk lihat)</summary>
 
-  - Action (bycatid) cmd "list"
+  - Action (bycatid & action lain) cmd "list"
   ```bash
   curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "kode": "bycatid",
  "nomor_hp": "08560",
  "cmd": "list"
+ "deskripsi": false,
  "payment": "qris",
  "id_telegram": "13165",
  "nama_paket": "Category Freedom Internet Harian",
@@ -1926,7 +1929,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 }'
   ```
 
-  - Respon (bycatid) cmd "list"
+  - Respon (bycatid & action lain) cmd "list"
   ```json
   {
   "status": "success",
@@ -1957,12 +1960,50 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 }
   ```
 
-  - Action (bycatid) cmd id paket contoh "1"
+  - Contoh menampilkan deskripsi paket (cmd: 1) misal di category pkaet, angka 1 bisa di ganti dengan nomor id paket yang mau di liat deskripsi paketnya ( "deskripsi": true)
   ```bash
   curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "kode": "bycatid",
  "nomor_hp": "08560",
  "cmd": "1"
+ "deskripsi": true,
+ "payment": "qris",
+ "id_telegram": "13165",
+ "nama_paket": "Category Freedom Internet Harian",
+ "password": "5db069a3b9f3b36"
+}'
+  ```
+
+  - Respon deskripsi paket ID paket 1
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "status": "deskripsi",
+    "package_name": "Freedom Internet 22GB/14 Hari",
+    "tariff_display": "Rp 50.000",
+    "duration": "14 Hari",
+    "deskripsi": [
+      "Kuota Utama 22GB ● 14 Hari",
+      "Deskripsi Paket",
+      "Kuota Utama 22GB",
+      "PAS buat Kantong, PAS buat Harian, PAS buat Semua",
+      "Dapatkan Benefit Satspam+ dengan membeli paket ini",
+      "MASA AKTIF 14 Hari"
+    ]
+  },
+  "stderr": ""
+}
+  ```
+
+  - Action (bycatid & action lain) cmd id paket contoh "1"
+  ```bash
+  curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "kode": "bycatid",
+ "nomor_hp": "08560",
+ "cmd": "1"
+ "deskripsi": false,
  "payment": "qris",
  "id_telegram": "13165",
   "nama_paket": "Category Freedom Internet Harian",
@@ -2032,104 +2073,6 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         "msisdn": "628560"
       }
     }
-  },
-  "stderr": ""
-}
-  ```
-
-  - Action (byflashsale) cmd id paket contoh "2"
-  ```bash
-  curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
- "kode": "bycatid",
- "nomor_hp": "08560",
- "cmd": "2",
- "payment": "qris",
- "id_telegram": "13165",
- "nama_paket": "Category Flash Sale", 
- "password": "5db069a3b9f3b36"
-}'
-  ```
-
-  - Respon sukses (byflashsale) cmd id paket contoh "2"
-  ```json
-  {
-  "status": "success",
-  "code": 0,
-  "info_saldo_panel": {
-    "id_telegram": "13165",
-    "role": "admin",
-    "harga_awal": 500,
-    "diskon": 0,
-    "saldo_dipotong": 0,
-    "saldo_sisa": 151125
-  },
-  "data": {
-    "status": "success",
-    "message": "Pembelian paket berhasil",
-    "initiate_response": {
-      "nama_paket": "Freedom Internet 1.5GB",
-      "method_pembayaran": "QRIS",
-      "harga": "Rp7.000",
-      "actionData": "00020101021226640015ID.OTTOCASH.WWW01189360081110019603230212OP1D012852770303UME51440014ID.CO.QRIS.WWW0215ID10243242168280303UME520448145303360540470005802ID5903IOH6015Jl. Medan Merde61051011062720120BILL03233455924529070521SP17647796957918171390703A019612OP1D012852776304B8C8",
-      "transid": "SUP1522361764779",
-      "uniqueTransactionCode": "SUP15223617647796",
-      "expiryTime": 10,
-      "nmid": "ID1024324",
-      "servicebetransid": "SUP15223617647796",
-      "protip": "Kamu bisa melihat pemakaian data kamu melalui halaman akun"
-    },
-    "info_saldo_panel": {
-      "id_telegram": "13165",
-      "role": "admin",
-      "harga_awal": 500,
-      "diskon": 0,
-      "saldo_dipotong": 0,
-      "saldo_sisa": 151125
-    }
-  },
-  "stderr": ""
-}
-  ```
-
-  - Action (byflashsale) cmd "list"
-  ```bash
-  curl -X POST 'https://api.hidepulsa.com/api/v1/dor/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
- "kode": "bycatid",
- "nomor_hp": "08560",
- "cmd": "list",
- "payment": "qris",
- "id_telegram": "13165",
- "nama_paket": "Category Flash Sale",
- "password": "5db069a3b9f3b36"
-}'
-  ```
-
-  - Respon succes (byflashsale) cmd "list"
-  ```json
-  {
-  "status": "success",
-  "code": 0,
-  "data": {
-    "status": "list",
-    "message": "List paket flash sale, pilih menggunakan ID paket",
-    "data": [
-      {
-        "id": 1,
-        "package_name": "Internet 20GB",
-        "subtitle": "Freedom Internet 20GB, kuota utama 20GB . Rp50rb/30hr . Paket sebelumnya akan terganti",
-        "harga": 50000,
-        "harga_display": "Rp50.000",
-        "paymentchannels": "GOPAY,OVO,SHOPEEPAY,DANA,LINK,INDEPAY,IMKAS,QRIS"
-      },
-      {
-        "id": 2,
-        "package_name": "Internet 15GB",
-        "subtitle": "Freedom Internet 15GB, kuota utama 15GB . Rp25rb/3hr . Paket sebelumnya akan terganti",
-        "harga": 25000,
-        "harga_display": "Rp25.000",
-        "paymentchannels": "GOPAY,OVO,SHOPEEPAY,DANA,LINK,INDEPAY,IMKAS,QRIS"
-      }
-    ]
   },
   "stderr": ""
 }
