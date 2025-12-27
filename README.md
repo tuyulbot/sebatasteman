@@ -2125,6 +2125,13 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
 <details> <summary>7. Dompul ALL Provider (klik utuk lihat)</summary>
 
+  - List Action 
+  ```ini
+  Untuk Pengecekan nomor dompul 
+  - Indosat = engga ada limit pengecekan 
+  - XL = limit pengecekan pernomor 30x
+  ```
+
   <details> <summary> => Dompul MYXL (klik utuk lihat)</summary>
 
   - action (cek_dompul)
