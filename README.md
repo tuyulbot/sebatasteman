@@ -2011,7 +2011,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 }'
   ```
 
-  - Respon Sukses (bycatid) cmd id paket contoh "1"
+  - Respon Sukses (bycatid) cmd id paket contoh "1" ( pembayaran qris dan ewalet respon sama ambil "actionData")
   ```json
   {
   "status": "success",
@@ -2043,6 +2043,47 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
       "id_telegram": "13165",
       "role": "admin",
       "harga_awal": 500,
+      "diskon": 0,
+      "saldo_dipotong": 0,
+      "saldo_sisa": 151125
+    }
+  },
+  "stderr": ""
+}
+  ```
+
+  - Respon Sukses (bycatid) cmd id paket contoh "1" (Respon pembelian PULSA )
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "info_saldo_panel": {
+    "id_telegram": "13165",
+    "role": "admin",
+    "harga_awal": 1000,
+    "diskon": 0,
+    "saldo_dipotong": 0,
+    "saldo_sisa": 151125
+  },
+  "data": {
+    "status": "success",
+    "message": "pembelian paket berhasil",
+    "result": {
+      "status": "0",
+      "code": "10159",
+      "message": "Kamu bisa membeli kembali paket di menu Beli",
+      "transid": "SUP14016717655560590",
+      "data": {
+        "status": "true",
+        "protip": "Jika dalam 1x24 transaksi Anda belum sukses, silahkan hubungi INDIRA",
+        "buttontext": "Chat INDIRA",
+        "pageurl": "account"
+      }
+    },
+    "info_saldo_panel": {
+      "id_telegram": "13165",
+      "role": "admin",
+      "harga_awal": 1000,
       "diskon": 0,
       "saldo_dipotong": 0,
       "saldo_sisa": 151125
