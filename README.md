@@ -2125,6 +2125,221 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
 
 <details> <summary>7. Dompul ALL Provider (klik utuk lihat)</summary>
 
+  <details> <summary> => Dompul MYXL (klik utuk lihat)</summary>
+
+  - action (cek_dompul)
+```bash
+curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/json' -H 'Authorization:(ganti dengan api key, minta ke admin)' -H ':' -d '{
+ "action": "cek_dompul",
+ "id_telegram": "(ganti dengan id telegram)",
+ "password": "(ganti dengn password, minta ke admin)",
+ "nomor_hp": "(masukan nomor hp)"
+}'
+```
+
+  - respon action (cek_dompul)
+  ```json
+  {
+  "status": "success",
+  "code": 0,
+  "data": {
+    "success": true,
+    "code": "000",
+    "message": "",
+    "data": {
+      "subs_info": {
+        "msisdn": "62877773",
+        "operator": "XL",
+        "id_verified": "Sudah",
+        "net_type": "4G",
+        "tenure": "1 Tahun 8 Bulan",
+        "exp_date": "14-02-2026",
+        "grace_until": "16-03-2026",
+        "volte": {
+          "device": false,
+          "area": true,
+          "simcard": true
+        }
+      },
+      "package_info": {
+        "error_message": null,
+        "packages": [
+          {
+            "name": "XTRA ON",
+            "expiry": "23-08-2027",
+            "timestamp": 1819040399,
+            "quotas": [
+              {
+                "name": "24jam di Semua Jaringan_Area Kota",
+                "percent": 100,
+                "total": "6GB",
+                "remaining": "6GB"
+              },
+              {
+                "name": "24jam di Semua Jaringan",
+                "percent": 100,
+                "total": "6GB",
+                "remaining": "6GB"
+              }
+            ]
+          },
+          {
+            "name": "AO Tagging Double-Triple Kuota",
+            "expiry": "06-10-2026",
+            "timestamp": 1791305999,
+            "quotas": [
+              {
+                "name": "Bonus Kuota Utama",
+                "percent": 0,
+                "total": "1KB",
+                "remaining": "0KB"
+              }
+            ]
+          },
+          {
+            "name": "DRP GAMES 1GB 30D XL",
+            "expiry": "20-01-2026",
+            "timestamp": 1768928399,
+            "quotas": [
+              {
+                "name": "24jam Games",
+                "percent": 98.5,
+                "total": "2GB",
+                "remaining": "2.GB"
+              }
+            ]
+          },
+          {
+            "name": "Paket Bundling eSIM 36GB Setahun",
+            "expiry": "14-01-2026",
+            "timestamp": 1768409999,
+            "quotas": [
+              {
+                "name": "Kuota Utama",
+                "percent": 100,
+                "total": "2GB",
+                "remaining": "2GB"
+              }
+            ]
+          },
+          {
+            "name": "Bonus Kuota Youtube Paket Bundling",
+            "expiry": "14-01-2026",
+            "timestamp": 1768409999,
+            "quotas": [
+              {
+                "name": "Kuota Bonus Youtube",
+                "percent": 100,
+                "total": "3GB",
+                "remaining": "3GB"
+              }
+            ]
+          },
+          {
+            "name": "Paket Bundling Youtube eSIM 60GB Setahun",
+            "expiry": "10-01-2026",
+            "timestamp": 1768064399,
+            "quotas": [
+              {
+                "name": "Kuota Utama",
+                "percent": 24.27,
+                "total": "2GB",
+                "remaining": "497MB"
+              }
+            ]
+          },
+          {
+            "name": "Pkt XTRA Combo YouTube 12bln, 1GB",
+            "expiry": "10-01-2026",
+            "timestamp": 1768064399,
+            "quotas": [
+              {
+                "name": "24jam di semua jaringan",
+                "percent": 0,
+                "total": "1KB",
+                "remaining": "0KB"
+              },
+              {
+                "name": "YouTube 24jam",
+                "percent": 100,
+                "total": "1GB",
+                "remaining": "1GB"
+              }
+            ]
+          },
+          {
+            "name": "Bonus Kuota Youtube Paket Bundling eSIM",
+            "expiry": "10-01-2026",
+            "timestamp": 1768064399,
+            "quotas": [
+              {
+                "name": "Kuota Bonus Youtube",
+                "percent": 93,
+                "total": "3GB",
+                "remaining": "2.8GB"
+              }
+            ]
+          },
+          {
+            "name": "Bonus Loyalty Bulan ke-3",
+            "expiry": "09-01-2026",
+            "timestamp": 1767977999,
+            "quotas": [
+              {
+                "name": "Kuota Pelanggan Baru",
+                "percent": 100,
+                "total": "9GB",
+                "remaining": "9GB"
+              },
+              {
+                "name": "Kuota Pelanggan Baru Area",
+                "percent": 79.56,
+                "total": "9GB",
+                "remaining": "7.2GB"
+              }
+            ]
+          },
+          {
+            "name": "Bundling 45GB Setahun",
+            "expiry": "03-01-2026",
+            "timestamp": 1767459599,
+            "quotas": [
+              {
+                "name": "Kuota Bonus WhatsApp",
+                "percent": 100,
+                "total": "2.8GB",
+                "remaining": "2.8GB"
+              },
+              {
+                "name": "Kuota Utama",
+                "percent": 100,
+                "total": "1GB",
+                "remaining": "1GB"
+              }
+            ]
+          },
+          {
+            "name": "Xtra Conference 15GB, 7hr",
+            "expiry": "28-12-2025",
+            "timestamp": 1766941199,
+            "quotas": [
+              {
+                "name": "Xtra Conference 24jam di 2G3G4G",
+                "percent": 99.07,
+                "total": "15GB",
+                "remaining": "14.9GB"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "stderr": ""
+}
+  ```
+  </details>
+
   <details> <summary> => Dompul Indosat (cekdompul_isat) (klik utuk lihat)</summary>
   
   - Action (cekdompul_isat)
@@ -2544,6 +2759,8 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   "stderr": ""
 }
   ```
+
+  </details>
 
 
 </details>
