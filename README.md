@@ -2121,3 +2121,429 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
   </details>
 
 </details>
+
+
+<details> <summary>7. Dompul ALL Provider (klik utuk lihat)</summary>
+
+  <details> <summary> => Dompul Indosat (cekdompul_isat) (klik utuk lihat)</summary>
+  
+  - Action (cekdompul_isat)
+  ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "cekdompul_isat",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+  ```
+
+  - Respon sukses (cekdompul_isat)
+  ```json
+    {
+  "status": "0",
+  "code": 0,
+  "data": {
+    "status": "0",
+    "code": "26000",
+    "message": "success",
+    "transid": "SUP9150161766816719211177",
+    "data": {
+      "packdata": {
+        "serviceclass": 8000,
+        "expireddate": "20261115",
+        "status": "SUCCESS",
+        "packageslist": [
+          {
+            "ServiceType": "Add On",
+            "ServiceName": "PO_ADO_SEN_PROMO_FI_150GB_V5_2",
+            "ServiceDescription": "Promo Freedom Internet 150GB",
+            "PackageCode": "PO_ADO_SEN_PROMO_FI_150GB_V5_2:MRFIS0014Y30000001",
+            "PackageName": "Promo Freedom Internet 150GB",
+            "StartDate": "27.12.2025",
+            "EndDate": "24.01.2026",
+            "PackagePeriod": "28",
+            "PeriodUnit": "DAYS",
+            "BuyExtra": "Y",
+            "Unreg": "Y",
+            "UnregKeyword": "UNREG 1000000002869574256",
+            "UnregShortcode": 124,
+            "Quotas": [
+              {
+                "name": "Utama",
+                "description": "Utama",
+                "rawInitialQuota": 161061273600,
+                "rawUsedQuota": 1048576,
+                "rawRemainingQuota": 161060225024,
+                "initialQuota": 153600,
+                "additionalQuota": 0,
+                "usedQuota": 1,
+                "remainingQuota": 153599,
+                "quotaUnit": "MB",
+                "benefitType": "DATA",
+                "expiryDate": 20260127,
+                "quotaSource": "DA:30129",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              },
+              {
+                "name": "Nelp Puas ke IM3 & Tri",
+                "description": "Nelp Puas ke IM3 & Tri",
+                "rawInitialQuota": 300000,
+                "rawUsedQuota": 0,
+                "rawRemainingQuota": 300000,
+                "initialQuota": 5000,
+                "additionalQuota": 0,
+                "usedQuota": 0,
+                "remainingQuota": 5000,
+                "quotaUnit": "Menit",
+                "benefitType": "VOICE",
+                "expiryDate": 20260127,
+                "quotaSource": "DA:30142",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              }
+            ],
+            "splPackage": {
+              "schema": "Benefit Vidio",
+              "attributes": {
+                "home_banner_url": "https://im3shop.ioh.co.id/api/epl/web?language=!LANGUAGE!&jwt_token=!JWTTOKEN!&jwt_client=MyIM3-IOH&geturl=T",
+                "home_banner": "https://myim3asset.ioh.co.id/assets/myim3/banners/11aug25vidid.png",
+                "buttontext": "Klaim",
+                "description": "Benefit Vidio",
+                "telco_banner": "https://myim3asset.ioh.co.id/assets/myim3/banners/11aug25vidid.png"
+              }
+            },
+            "buyextracatagory": "EXTRA QUOTA",
+            "total_data": 157286400,
+            "total_voice": 5000,
+            "total_sms": 0,
+            "total_rupia": 0,
+            "expMsg": "Berakhir pada 24 Jan 2026",
+            "showtop": true,
+            "displayInSubscriptionTab": false
+          },
+          {
+            "ServiceType": "Main Package",
+            "ServiceName": "PO_BSC_SPDATA2GB_SUMA",
+            "ServiceDescription": "SP IM3 Acq 2GB Sumatera",
+            "PackageCode": "",
+            "PackageName": "",
+            "StartDate": "07.08.2022",
+            "EndDate": "15.11.2026",
+            "PackagePeriod": "0",
+            "PeriodUnit": "",
+            "BuyExtra": "N",
+            "Unreg": "N",
+            "UnregKeyword": "",
+            "UnregShortcode": 0,
+            "Quotas": [
+              {
+                "name": "SOSFee",
+                "description": "SOS Fee tracking Account Balance",
+                "rawInitialQuota": 0,
+                "rawUsedQuota": 0,
+                "rawRemainingQuota": 0,
+                "initialQuota": 0,
+                "additionalQuota": 0,
+                "usedQuota": 0,
+                "remainingQuota": 0,
+                "quotaUnit": "MONETARY",
+                "benefitType": "MONETARY",
+                "expiryDate": 0,
+                "quotaSource": "DA:24007070",
+                "show": "ON",
+                "unlimitedFlag": "false",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              },
+              {
+                "name": "Principal Commodity Package",
+                "description": "Principal Commodity Package",
+                "rawInitialQuota": 0,
+                "rawUsedQuota": 0,
+                "rawRemainingQuota": 0,
+                "initialQuota": 0,
+                "additionalQuota": 0,
+                "usedQuota": 0,
+                "remainingQuota": 0,
+                "quotaUnit": "MONETARY",
+                "benefitType": "MONETARY",
+                "expiryDate": 0,
+                "quotaSource": "DA:24027030",
+                "show": "ON",
+                "unlimitedFlag": "false",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              },
+              {
+                "name": "SOSConsumption",
+                "description": "SOS Consumption DA Balance",
+                "rawInitialQuota": 0,
+                "rawUsedQuota": 0,
+                "rawRemainingQuota": 0,
+                "initialQuota": 0,
+                "additionalQuota": 0,
+                "usedQuota": 0,
+                "remainingQuota": 0,
+                "quotaUnit": "MONETARY",
+                "benefitType": "MONETARY",
+                "expiryDate": 0,
+                "quotaSource": "DA:24007030",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": false,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              },
+              {
+                "name": "SOSPrincipal",
+                "description": "SOS Principal tracking Account Balance",
+                "rawInitialQuota": 0,
+                "rawUsedQuota": 0,
+                "rawRemainingQuota": 0,
+                "initialQuota": 0,
+                "additionalQuota": 0,
+                "usedQuota": 0,
+                "remainingQuota": 0,
+                "quotaUnit": "MONETARY",
+                "benefitType": "MONETARY",
+                "expiryDate": 0,
+                "quotaSource": "DA:24007060",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": false,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              },
+              {
+                "name": "Fee Commodity Package",
+                "description": "Fee Commodity Package",
+                "rawInitialQuota": 0,
+                "rawUsedQuota": 0,
+                "rawRemainingQuota": 0,
+                "initialQuota": 0,
+                "additionalQuota": 0,
+                "usedQuota": 0,
+                "remainingQuota": 0,
+                "quotaUnit": "MONETARY",
+                "benefitType": "MONETARY",
+                "expiryDate": 0,
+                "quotaSource": "DA:24027040",
+                "show": "ON",
+                "unlimitedFlag": "false",
+                "showremaining": true,
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              }
+            ],
+            "buyextracatagory": "EXTRA QUOTA",
+            "total_data": 0,
+            "total_voice": 0,
+            "total_sms": 0,
+            "total_rupia": 0,
+            "expMsg": "Berakhir pada 15 Nov 2026",
+            "PromoCode": "8000",
+            "displayInSubscriptionTab": false
+          }
+        ],
+        "substype": "PREPAID",
+        "cardtype": "USIM",
+        "alfamartflag": "N",
+        "offers": [
+          "4483;20251208;20371231;0",
+          "123872;20240815;99991231;0",
+          "123873;20240815;99991231;0",
+          "123874;20240815;99991231;0",
+          "123883;20240815;99991231;0",
+          "123884;20240815;99991231;0",
+          "123885;20240815;99991231;0",
+          "123886;20240815;99991231;0",
+          "123887;20240815;99991231;0",
+          "123888;20240815;99991231;0",
+          "123889;20240815;99991231;0",
+          "91100301;20240815;99991231T12:00:00+0000;2",
+          "200000300;20220226;99991231;0",
+          "200030010;20220808;20320805;0",
+          "200090010;20220226;99991231;0",
+          "203050010;20220807;20320804;0",
+          "203720030;20240819;20340817;0"
+        ],
+        "lastbalance": 0,
+        "installments": [],
+        "tid": "SUP9150161766816719211177",
+        "msisdn": "6285840052077"
+      },
+      "prepaidinfo": {
+        "cardactiveuntil": "15 Nov 2026",
+        "balance": "0",
+        "graceperioduntil": "15 Dec 2026",
+        "expires": "Berlaku hingga 15 Nov 26"
+      },
+      "summary": {
+        "data": {
+          "usedquota": 1024,
+          "remainingquota": 157285376,
+          "initialquota": 157286400,
+          "quotaunit": "KB",
+          "title": "DATA",
+          "isunlimited": false
+        },
+        "roamingData": {
+          "usedquota": 0,
+          "remainingquota": 0,
+          "initialquota": 0,
+          "quotaunit": "KB",
+          "isunlimited": false
+        },
+        "voice": {
+          "usedquota": 0,
+          "remainingquota": 5000,
+          "initialquota": 5000,
+          "title": "NELPON",
+          "isunlimited": false,
+          "quotaunit": "min"
+        }
+      },
+      "customerinfo": {
+        "sim4G": true,
+        "corporateuser": false,
+        "upgradeeligible": true,
+        "lmsenrolled": false,
+        "newuser": false
+      },
+      "smartAlerts": [
+        {
+          "color": "#EC1C24-#BF282E",
+          "title": "Cepat!<br>Selesaikan pembayaranmu segera!",
+          "min": 0,
+          "max": 3,
+          "rule": "PAYMENT_REMINDER",
+          "pageurl": "transactionhistory",
+          "buttontext": "Riwayat transaksi",
+          "position": 0,
+          "apiurl": "/personalization/attention",
+          "promoimage": "",
+          "datatype": "api",
+          "datasource": "attention",
+          "description": "",
+          "fallback": 1,
+          "ruleid": "82_2_0",
+          "ctitle": "Penting, nih!<br>Buruan cek sekarang",
+          "tabtitle": "Payment Reminder"
+        },
+        {
+          "color": "#00B091-#1CBFE7",
+          "title": "Hot promo!<br>Ada penawaran menarik buatmu, nih!",
+          "min": 0,
+          "max": 500,
+          "rule": "CVM_OFFERS_DAILY",
+          "pageurl": "https://indosatooredoo.com/id/personal/myim3/deeplink?action=carrieroffer",
+          "buttontext": "Lihat paket lainnya",
+          "position": 2,
+          "apiurl": "/offer/contexual?limit=5",
+          "promoimage": "https://myim3asset.ioh.co.id/assets/myim3/banners/131225ContID.png",
+          "datatype": "api",
+          "datasource": "packages",
+          "description": "Kami sudah pilihkan produk yang cocok untuk memaksimalkan keseruanmu ",
+          "fallback": 0,
+          "ruleid": "82_2_0",
+          "ctitle": "Hot promo!<br>Ada penawaran menarik buatmu, nih!",
+          "promourl": "https://indosatooredoo.com/id/personal/myim3/deeplink?action=page&pagename=onlyforyou&category=IMIFS&source=magicbox-revenue&transid=newyear",
+          "tabtitle": "Hot promo"
+        }
+      ],
+      "badgeInfo": {
+        "splpkgsList": [
+          {
+            "schema": "Benefit Vidio",
+            "attributes": {
+              "home_banner_url": "https://im3shop.ioh.co.id/api/epl/web?language=!LANGUAGE!&jwt_token=!JWTTOKEN!&jwt_client=MyIM3-IOH&geturl=T",
+              "home_banner": "https://myim3asset.ioh.co.id/assets/myim3/banners/11aug25vidid.png",
+              "buttontext": "Klaim",
+              "description": "Benefit Vidio",
+              "validity": "24.01.2026",
+              "telco_banner": "https://myim3asset.ioh.co.id/assets/myim3/banners/11aug25vidid.png"
+            }
+          }
+        ],
+        "color": "#00B091-#1CBFE7",
+        "title": "Reward atau Keuntungan yang Bisa Kamu Ambil Sekarang",
+        "pageurl": "https://indosatooredoo.com/id/personal/myim3/deeplink?action=page&pagename=rewards&tab=3058&subtab=3",
+        "buttontext": "Lihat semua reward & benefit",
+        "description": " ",
+        "position": 5
+      },
+      "emergencyCredit": {
+        "eccard": {
+          "title": "Aduh! Serba tiris! Tetap tenang, ada Layanan Darurat di sini.",
+          "description": "Pilih Layanan Darurat sesuai kebutuhanmu agar kamu tetap tersambung :",
+          "icon": "https://myim3api.kloc.co/api/v1/image?id=379d9ee0-dc5d-4188-a8eb-a7afa0f3c6c4"
+        }
+      },
+      "isInvoicegenerated": false,
+      "sptravelonuse": false,
+      "sptravelon_restricted": "imkas,impoin,kios,ucan,buy_content,rewards_tab",
+      "cvm_type": "Daily",
+      "newuser": "false",
+      "info": {
+        "roaming": {
+          "postpaid_icon": "https://myim3asset.ioh.co.id/assets/myim3/icons/post_paid_icon.png",
+          "prepaid_icon": "https://myim3asset.ioh.co.id/assets/myim3/icons/prepaid_package_icons.png",
+          "postpaid_package_icon": "https://myim3asset.ioh.co.id/assets/myim3/icons/post_paid_icon.png",
+          "prepaid_package_icon": "https://myim3asset.ioh.co.id/assets/myim3/icons/prepaid_package_icons.png"
+        },
+        "eccard": {
+          "icon": "https://myim3api.kloc.co/api/v1/image?id=379d9ee0-dc5d-4188-a8eb-a7afa0f3c6c4",
+          "banner": "https://myim3api.kloc.co/api/v1/image?id=727a598d-f2bc-4956-b342-7e9bbb5fd80d"
+        },
+        "platinum_family": {
+          "platinum_family_package_parent_icon": "https://myim3asset.ioh.co.id/assets/myim3/icons/platinum_family_package_parent_icon.png",
+          "platinum_family_package_child_icon": "https://myim3asset.ioh.co.id/assets/myim3/icons/platinum_family_package_child_icon.png"
+        },
+        "modules": "impoin,imkas,kios,ucan",
+        "zeroquota_restricted": "impoin,imkas,kios"
+      }
+    }
+  },
+  "stderr": ""
+}
+  ```
+
+
+</details>
