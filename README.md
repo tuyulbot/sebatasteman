@@ -2407,7 +2407,7 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         "lastbalance": 0,
         "installments": [],
         "tid": "SUP9150161766816719211177",
-        "msisdn": "6285840052077"
+        "msisdn": "6285840"
       },
       "prepaidinfo": {
         "cardactiveuntil": "15 Nov 2026",
