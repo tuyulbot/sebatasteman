@@ -2773,9 +2773,9 @@ curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/
 
   </details>
 
-  <details> <summary> => Dompul Indosat (cekdompul_isat) (klik utuk lihat)</summary>
+  <details> <summary> => Dompul Tri (klik utuk lihat)</summary>
   
-  - Action (cekdompul_isat)
+  - Action (cekdompul_tri)
   ```bash
     curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
  "action": "cekdompul_tri",
@@ -2938,7 +2938,7 @@ curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/
         ],
         "substype": "PREPAID",
         "tid": "SPSUP1331321766917004733437",
-        "msisdn": "62895327195210"
+        "msisdn": "6289532719"
       },
       "prepaidinfo": {
         "cardactiveuntil": "28 Oct 2026",
