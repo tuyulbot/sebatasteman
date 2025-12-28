@@ -1723,6 +1723,10 @@ curl -X POST 'https://api.hidepulsa.com/api/circle' -H 'Content-Type:application
         - "cmd": "list" = (untuk melihat list produk flash sale / hot promo)
         - "cmd": "1" = (memlihi paket yang ada di respon list dan menggunakan ID paket yang ada di list contoh = "2")
         - Tambahkan payload ("deskripsi": true) untuk menampilkan deskirpsi paket by ID PAKET
+  => bycode = (untuk membeli paket bycode)
+      <+> Perintah 
+        - Untuk (bycode) di payload tanpa "cmd" hapus saja karna tidak di perlukan lagi 
+        - Tambahkan payload ("deskripsi": true, jika false tidak akan ada deskripsi) untuk menampilkan deskirpsi paket by ID PAKET
     
   Noted : Cek produk sama seperti xl cuma di setiap paket ada tambahan "provider": "xl", "provider": "indosat", "provider": "tri"
 ```
@@ -2769,5 +2773,308 @@ curl -X POST 'https://api.hidepulsa.com/api/tools' -H 'Content-Type:application/
 
   </details>
 
+  <details> <summary> => Dompul Indosat (cekdompul_isat) (klik utuk lihat)</summary>
+  
+  - Action (cekdompul_isat)
+  ```bash
+    curl -X POST 'https://api.hidepulsa.com/api/tools/isat_tri' -H 'Content-Type:application/json' -H 'Authorization:(ganti api-key)' -H ':' -d '{
+ "action": "cekdompul_tri",
+ "id_telegram": "1316",
+ "password": "5db069a3b9f3b36c38",
+ "nomor_hp": "08587"
+}'
+  ```
+
+  - Respon sukses (cekdompul_isat)
+  ```json
+  {
+  "status": "0",
+  "code": 0,
+  "data": {
+    "status": "0",
+    "code": "26000",
+    "message": "success",
+    "transid": "SPSUP1331321766917004733437",
+    "data": {
+      "activationStatus": "Active",
+      "bonstriDetails": {
+        "loyaltyPoints": "1100",
+        "validityLoyaltyPoints": "3",
+        "bonusPoints": "0",
+        "pointstonexttierlevel": "900",
+        "totalPoints": "1100"
+      },
+      "packdata": {
+        "serviceclass": 637,
+        "expireddate": "20261028",
+        "status": "SUCCESS",
+        "packageslist": [
+          {
+            "ServiceType": "Rating Discount",
+            "ServiceName": "VAON1",
+            "ServiceDescription": "SPV AON 1.5+1.5GB",
+            "PackageCode": "VAON1",
+            "PackageName": "VAON1",
+            "StartDate": "04.03.2022",
+            "EndDate": "28.10.2026",
+            "EndTime": "17:45",
+            "networkpackage": "Plan_1TO64_30D_FU",
+            "PackagePeriod": "0",
+            "PeriodUnit": "",
+            "BuyExtra": "N",
+            "Unreg": "N",
+            "UnregKeyword": "",
+            "UnregShortcode": 0,
+            "Quotas": [
+              {
+                "name": "Kuota AON",
+                "description": "Kuota AON",
+                "initialQuota": 1024,
+                "usedQuota": 1024,
+                "remainingQuota": 0,
+                "quotaUnit": "MB",
+                "benefitType": "DATA",
+                "expiryDate": 20261127,
+                "quotaSource": "NA",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "networkPackage": "Plan_1TO64_30D_FU",
+                "showremaining": true,
+                "subtitle": "SPV AON 1.5+1.5GB",
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              }
+            ],
+            "buyextracatagory": "EXTRA QUOTA",
+            "additional_info": "ups kamu kehabisan kuota",
+            "total_data": 1048576,
+            "total_voice": 0,
+            "total_sms": 0,
+            "total_rupia": 0,
+            "expMsg": "Berakhir pada 28 Okt 2026",
+            "reg_keyword": "VAON1",
+            "familyOffer": "DONGLE",
+            "showtop": true,
+            "bonusSubType": "DONGLE",
+            "displayInSubscriptionTab": false
+          },
+          {
+            "ServiceType": "Package",
+            "ServiceName": "EVCH10GB28D_0425",
+            "ServiceDescription": "Happy 10GB 28 hari",
+            "PackageCode": "EVCH10GB28D_0425",
+            "PackageName": "Nelepon Sesama Tri IM3_28D",
+            "StartDate": "19.12.2025",
+            "EndDate": "16.01.2026",
+            "EndTime": "20:46",
+            "networkpackage": "",
+            "PackagePeriod": "0",
+            "PeriodUnit": "",
+            "BuyExtra": "N",
+            "Unreg": "Y",
+            "UnregKeyword": "",
+            "UnregShortcode": 0,
+            "Quotas": [
+              {
+                "name": "Kuota Nasional",
+                "description": "Kuota Nasional",
+                "initialQuota": 10240,
+                "usedQuota": 10240,
+                "remainingQuota": 3868,
+                "quotaUnit": "MB",
+                "benefitType": "DATA",
+                "expiryDate": 20260116,
+                "quotaSource": "NA",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "networkPackage": "PLAN_10GB_30D_AR_OW",
+                "showremaining": true,
+                "subtitle": "Happy 10GB 28 hari",
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              },
+              {
+                "name": "Telepon Sesama Tri & IM3",
+                "description": "Telepon Sesama Tri & IM3",
+                "initialQuota": 5000,
+                "usedQuota": 0,
+                "remainingQuota": 5000,
+                "quotaUnit": "Menit",
+                "benefitType": "VOICE",
+                "expiryDate": 20260116,
+                "quotaSource": "NA",
+                "show": "ON",
+                "unlimitedFlag": "N",
+                "showremaining": true,
+                "subtitle": "Telepon Sesama Tri  dan IM3",
+                "roaming": false,
+                "add_to_total": true,
+                "visibleForZone": false,
+                "displayInSubscriptionTab": false,
+                "isGoogleProduct": false,
+                "activeQuota": false
+              }
+            ],
+            "buyextracatagory": "EXTRA QUOTA",
+            "additional_info": "ups kamu kehabisan kuota",
+            "total_data": 10485760,
+            "total_voice": 5000,
+            "total_sms": 0,
+            "total_rupia": 0,
+            "expMsg": "Berakhir pada 16 Jan 2026",
+            "reg_keyword": "EVCH10GB28D_0425",
+            "familyOffer": "DONGLE",
+            "bonusSubType": "VOICE",
+            "displayInSubscriptionTab": false
+          }
+        ],
+        "substype": "PREPAID",
+        "tid": "SPSUP1331321766917004733437",
+        "msisdn": "62895327195210"
+      },
+      "prepaidinfo": {
+        "cardactiveuntil": "28 Oct 2026",
+        "balance": "25",
+        "graceperioduntil": "27 Nov 2026",
+        "usersince": "25 February 2022",
+        "expires": "Berlaku hingga 28 Okt 26",
+        "activeuntil": "28 October 2026"
+      },
+      "status": "SUCCESS",
+      "summary": {
+        "data": {
+          "usedquota": 11534336,
+          "remainingquota": 3960832,
+          "initialquota": 11534336,
+          "quotaunit": "KB",
+          "title": "DATA",
+          "isunlimited": false
+        },
+        "roamingData": {
+          "usedquota": 0,
+          "remainingquota": 0,
+          "initialquota": 0,
+          "quotaunit": "KB",
+          "isunlimited": false
+        },
+        "voice": {
+          "usedquota": 0,
+          "remainingquota": 5000,
+          "initialquota": 5000,
+          "title": "NELPON",
+          "isunlimited": false,
+          "quotaunit": "min"
+        }
+      },
+      "customerinfo": {
+        "sim4G": false,
+        "corporateuser": false,
+        "upgradeeligible": true,
+        "lmsenrolled": false,
+        "newuser": false
+      },
+      "smartAlerts": [
+        {
+          "color": "#dc3545",
+          "title": "Oh tidak,<br>Kamu masih memiliki pembayaran yang belum selesai",
+          "min": 0,
+          "max": 0,
+          "rule": "PAYMENT_REMINDER",
+          "pageurl": "transactionhistory",
+          "buttontext": "Riwayat Transaksi",
+          "position": 0,
+          "apiurl": "/personalization/attention",
+          "promoimage": "",
+          "datatype": "api",
+          "datasource": "attention",
+          "description": "",
+          "fallback": 1,
+          "ruleid": "5_2_0_ABOVE",
+          "ctitle": "null",
+          "promourl": "https://bimaplus.tri.co.id/en/deeplink?action=page&pagename=buy",
+          "tabtitle": "Bayar Sekarang"
+        },
+        {
+          "color": "#A69FF1-#00D7C2",
+          "title": "Ada penawaran menarik buatmu, nih!",
+          "min": 0,
+          "max": 500,
+          "rule": "CVM_OFFERS",
+          "pageurl": "buy",
+          "buttontext": "Lihat paket lainnya",
+          "position": 10,
+          "apiurl": "/personalization/rebuy",
+          "promoimage": "https://bimaasset.ioh.co.id/assets/bima/imageassets/Cont_ID_bima_eyr.png",
+          "datatype": "api",
+          "datasource": "packages",
+          "description": "Kami sudah pilihkan produk yang cocok untuk memaksimalkan keseruanmu ",
+          "fallback": 0,
+          "ruleid": "5_2_0_ABOVE",
+          "ctitle": "Need your attention<br>Hurry up check now",
+          "promourl": "https://bimaplus.tri.co.id/en/deeplink?action=page&pagename=limitedoffer&pwapg=limitedoffer&source=magicbox-revenue&transid=newyear",
+          "tabtitle": "Hot Promo"
+        },
+        {
+          "color": "#00B091-#1CBFE7",
+          "title": "Selamat Datang di bima+, beberapa hal yang bisa kamu lakukan untuk memulai",
+          "min": 0,
+          "max": 3,
+          "rule": "CAMPAIGN_EXT_USER",
+          "pageurl": "lifestyle",
+          "buttontext": "",
+          "position": 30,
+          "apiurl": "/campaign/available?limit=5",
+          "promoimage": "",
+          "datatype": "api",
+          "datasource": "vouchers",
+          "description": "Klaim voucher gratis sekarang sebelum kehabisan",
+          "fallback": 0,
+          "ruleid": "5.4.0_N_ABOVE",
+          "ctitle": "Need your attention<br>Hurry up check now",
+          "tabtitle": "Voucher Gratis"
+        }
+      ],
+      "dukapilstatus": "Registered",
+      "emergencyCredit": {
+        "eccard": {
+          "title": "Aduh! Serba tiris!Tetap tenang, ada Layanan Darurat di sini.",
+          "description": "Pilih Layanan Darurat sesuai kebutuhanmu agar kamu tetap tersambung :",
+          "icon": "https://myim3api.kloc.co/api/v1/image?id=379d9ee0-dc5d-4188-a8eb-a7afa0f3c6c4"
+        }
+      },
+      "isInvoicegenerated": false,
+      "sptravelonuse": false,
+      "sptravelon_restricted": "imkas,impoin,kios,ucan,buy_content,rewards_tab",
+      "zone": "Defend",
+      "bonstri_joined": "1",
+      "newuser": "false",
+      "info": {
+        "roaming": {
+          "postpaid_icon": "https://bimaasset.ioh.co.id/assets/bima/icons/roaming_dashboard_icon.png",
+          "prepaid_icon": "https://bimaasset.ioh.co.id/assets/bima/icons/roaming_dashboard_icon.png",
+          "postpaid_package_icon": "https://bimaasset.ioh.co.id/assets/bima/icons/package_icon.png",
+          "prepaid_package_icon": "https://bimaasset.ioh.co.id/assets/bima/icons/package_icon.png"
+        },
+        "eccard": {
+          "icon": "https://myim3api.kloc.co/api/v1/image?id=379d9ee0-dc5d-4188-a8eb-a7afa0f3c6c4",
+          "banner": "https://myim3api.kloc.co/api/v1/image?id=727a598d-f2bc-4956-b342-7e9bbb5fd80d"
+        },
+        "modules": "impoin,imkas,kios,ucan",
+        "zeroquota_restricted": "impoin,imkas,kios"
+      }
+    }
+  },
+  "stderr": ""
+}
+  ```
+  </details>
 
 </details>
